@@ -11,9 +11,6 @@ public class AdminPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(id = "email")
-    public WebElement loginSayfasiEmailKutusu;
-
     @FindBy(xpath = "(//span[text()='Allow all cookies'])[2]")
     public WebElement cookiesKabulButonu;
 
