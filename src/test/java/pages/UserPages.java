@@ -5,12 +5,10 @@ import utilities.Driver;
 
 public class UserPages {
 
+
+    asd
     public UserPages (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-    qwe333
-
-
-123123
+  
 }
