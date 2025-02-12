@@ -14,7 +14,9 @@ public class AdminPages {
     @FindBy(xpath = "(//span[text()='Allow all cookies'])[2]")
     public WebElement cookiesKabulButonu;
 
-    @FindBy(id = "pass")
+
+    @FindBy(id = "passwqwq")
     public WebElement loginSayfasiPasswordKutusu;
+
 
 }
