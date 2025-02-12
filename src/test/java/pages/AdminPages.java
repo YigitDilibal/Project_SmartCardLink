@@ -8,4 +8,8 @@ public class AdminPages {
     public AdminPages (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+
+
+    asdf
 }
