@@ -5,7 +5,12 @@ import utilities.Driver;
 
 public class UserPages {
 
+
+    asd
     public UserPages (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+
+    gffdgdfg
 }

@@ -11,13 +11,8 @@ public class AdminPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+
     @FindBy(id = "email")
     public WebElement loginSayfasiEmailKutusu;
-
-
-
-
-
-
 
 }
