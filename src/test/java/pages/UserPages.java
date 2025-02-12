@@ -8,4 +8,9 @@ public class UserPages {
     public UserPages (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    qwe
+
+
+
 }
