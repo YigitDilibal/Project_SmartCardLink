@@ -1,5 +1,5 @@
 package tests;
 
 public class yigittest {
-    345
+  345 123
 }
