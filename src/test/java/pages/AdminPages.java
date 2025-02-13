@@ -11,5 +11,11 @@ public class AdminPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    
+    @FindBy (id = "dropdownMenuButton1")
+    public WebElement avatarDropdownMenuButonu ;
+
+    @FindBy (xpath = "//span[contains(text(), 'Sign Out')]")
+    public WebElement signOutButonu;
+
+
 }
