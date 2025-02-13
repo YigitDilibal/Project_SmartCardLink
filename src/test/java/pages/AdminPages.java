@@ -11,10 +11,11 @@ public class AdminPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "(//span[text()='Allow all cookies'])[2]")
-    public WebElement cookiesKabulButonu;
+    @FindBy (id = "dropdownMenuButton1")
+    public WebElement avatarDropdownMenuButonu ;
 
-    @FindBy(id = "pass")
-    public WebElement loginSayfasiPasswordKutusu;
+    @FindBy (xpath = "//span[contains(text(), 'Sign Out')]")
+    public WebElement signOutButonu;
+
 
 }
