@@ -11,24 +11,4 @@ public class UserPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//*[@class='btn btn-white fs-18 ms-3 d-lg-block d-none']")
-    public WebElement homepageSıgnInButonu;
-
-    @FindBy (id = "email")
-    public WebElement signInEmailKutusu;
-
-    @FindBy (id = "password")
-    public WebElement signInPasswordKutusu;
-
-    @FindBy (xpath = "//*[@class=\"btn btn-primary\"]")
-    public WebElement signInLoginButonu;
-
-    @FindBy (xpath = "//*[@class='bi bi-eye-slash-fill']")
-    public WebElement signInBieyeSlashFill;
-
-    @FindBy (id = "remember_me")
-    public WebElement signInRemembermeBox;
-
-
-
 }
