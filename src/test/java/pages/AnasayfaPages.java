@@ -7,7 +7,4 @@ public class AnasayfaPages {
     public AnasayfaPages(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-
-    asdfsdgs
 }
