@@ -18,7 +18,7 @@ public class AnasayfaPages {
     @FindBy (id = "password")
     public WebElement signInPasswordKutusu;
 
-    @FindBy (xpath = "//*[@class=\"btn btn-primary\"]")
+    @FindBy (xpath = "//*[@class='btn btn-primary']")
     public WebElement signInLoginButonu;
 
     @FindBy (xpath = "//*[@class='bi bi-eye-slash-fill']")
@@ -26,6 +26,5 @@ public class AnasayfaPages {
 
     @FindBy (id = "remember_me")
     public WebElement signInRemembermeBox;
-
 
 }

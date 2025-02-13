@@ -11,5 +11,11 @@ public class AdminPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    
+    @FindBy (id = "dropdownMenuButton1")
+    public WebElement avatarDropdownMenuButonu ;
+
+    @FindBy (xpath = "(//*[@href='javascript:void(0)'])[3]")
+    public WebElement signOutButonu;
+
+
 }
