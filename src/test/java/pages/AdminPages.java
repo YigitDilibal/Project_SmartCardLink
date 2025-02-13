@@ -17,5 +17,11 @@ public class AdminPages {
     @FindBy (xpath = "//span[contains(text(), 'Sign Out')]")
     public WebElement signOutButonu;
 
+    @FindBy (xpath = "(//*[.='Users'])[1]")
+    public WebElement dashboardSolPanelUsersButonu;
+
+    @FindBy (xpath = "//a[.='Add User']")
+    public WebElement usersSekmesiAddUserButonu;
+
 
 }
