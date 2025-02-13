@@ -14,7 +14,7 @@ public class AdminPages {
     @FindBy (id = "dropdownMenuButton1")
     public WebElement avatarDropdownMenuButonu ;
 
-    @FindBy (xpath = "(//*[@href='javascript:void(0)'])[3]")
+    @FindBy (xpath = "//span[contains(text(), 'Sign Out')]")
     public WebElement signOutButonu;
 
 
