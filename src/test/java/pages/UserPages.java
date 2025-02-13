@@ -11,6 +11,4 @@ public class UserPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
-
 }
