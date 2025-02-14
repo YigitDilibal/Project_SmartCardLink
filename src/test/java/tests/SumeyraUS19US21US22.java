@@ -181,10 +181,13 @@ public class SumeyraUS19US21US22 {
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("usersumeyramail"));
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         //Kullanıcı avatar/isim alanındaki dahbord menüye  a tıklar.
-
+        userPages.avatarDropdownMenuButonu.click();
         //Dashbord menü deki "Çıkış" butonuna tıklar.
+        userPages.signOutButonu.click();
         //Sıgn ın sayfasına yönlendirilir
+        Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
         //Sayfayı kapatır.
+        Driver.quitDriver();
     }
 }
 
