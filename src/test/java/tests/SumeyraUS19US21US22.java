@@ -30,7 +30,7 @@ public class SumeyraUS19US21US22 {
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
         //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        //Login tusuna basar ve kendi sayfasına erişim saglar.git
+        //Login tusuna basar ve kendi sayfasına erişim saglar.
         anasayfaPages.signInLoginButonu.click();
         //Sıgn out olur ve sayfayı kapatır.
         adminPages.avatarDropdownMenuButonu.click();
@@ -173,6 +173,21 @@ public class SumeyraUS19US21US22 {
         //Sayfayı kapatır
         Driver.quitDriver();
     }
-
+    @Test
+    public void pozitifLogoutTesti() {
+        //Kullanıcı URL ile siteye erişir
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        //Kullanıcı giriş bilgilerini girer ve login olur.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("usersumeyramail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        //Kullanıcı avatar/isim alanındaki dahbord menüye  a tıklar.
+        userPages.avatarDropdownMenuButonu.click();
+        //Dashbord menü deki "Çıkış" butonuna tıklar.
+        userPages.signOutButonu.click();
+        //Sıgn ın sayfasına yönlendirilir
+        Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
+        //Sayfayı kapatır.
+        Driver.quitDriver();
+    }
 }
 

@@ -10,6 +10,11 @@ public class UserPages {
     public UserPages (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+    @FindBy (id = "dropdownMenuButton1")
+    public WebElement avatarDropdownMenuButonu ;
+
+    @FindBy (xpath = "//span[contains(text(), 'Sign Out')]")
+    public WebElement signOutButonu;
 
     @FindBy (xpath = "(//*[.='Enquiries'])[1]")
     public WebElement dahbordPanelEnguiriesButonu;
