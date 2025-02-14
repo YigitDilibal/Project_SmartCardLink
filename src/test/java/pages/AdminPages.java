@@ -31,5 +31,7 @@ public class AdminPages {
     @FindBy (xpath = "//*[@class='mb-1 text-decoration-none fs-6']")
     public List<WebElement> usersSekmesiKullaniciAdlariListesi;
 
+    @FindBy (xpath = "//span[contains(text(), 'Bağlı Kullanıcılar')]")
+    public WebElement adminSekmesiBagliKullanicilarButonu;
 
 }
