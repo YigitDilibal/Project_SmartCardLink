@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPages;
 import pages.AnasayfaPages;
+import pages.UserPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -17,6 +18,7 @@ public class SumeyraUS19US21US22 {
 
     AnasayfaPages anasayfaPages = new AnasayfaPages();
     AdminPages adminPages = new AdminPages();
+    UserPages userPages = new UserPages();
 
     @Test
     public void gecerliLoginTesti () {
@@ -112,7 +114,9 @@ public class SumeyraUS19US21US22 {
         adminPages.signOutButonu.click();
         //SıgnIn sayfasına geri gider. Email ve Password kutucugunun otomatik dolduğunu doğrular ve login olur.
         anasayfaPages.signInLoginButonu.click();
-        Assert.assertTrue(adminPages.signOutButonu.isEnabled());
+        String expectedMailKutusuText = "sumeyra.sadmin@smartcardlink.com";
+        String actualMailKutusuText = anasayfaPages.signInEmailKutusu.getText();
+        Assert.assertEquals(expectedMailKutusuText,actualMailKutusuText);
         //sayfayı kapatır.
         Driver.quitDriver();
     }
@@ -135,5 +139,40 @@ public class SumeyraUS19US21US22 {
         //Sayfayı kapatır.
         Driver.quitDriver();
     }
+    @Test
+    public void notAnAdminUserSıgnınTest (){
+        //Yönetici URL ile siteye erişim sağlar
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        //Yönetici Sıgn ın sayfasına erişim sağlar.
+        anasayfaPages.homepageSıgnInButonu.click();
+        //Sıgn ın sayfasında Email kutusuna geçersiz mail girer.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("usersumeyramail"));
+        //Sıgn ın sayfasında password kutusununa gecersiz password girer.
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        //Login tusuna basar ve yönetici sayfasına ulaşamaz.
+        anasayfaPages.signInLoginButonu.click();
+        Assert.assertTrue(userPages.dahbordPanelEnguiriesButonu.isDisplayed());
+        //Sayfayı kapatır.
+        Driver.quitDriver();
+    }
+    @Test
+    public void loginPageLoadTest (){
+        //Yönetici URL ile siteye erişim sağlar
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        //Yönetici Sıgn ın sayfasına erişim sağlar.
+        ReusableMethods.bekle(2);
+        anasayfaPages.homepageSıgnInButonu.click();
+        //Yönetici Sign in Formunu görüntüler.
+        Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
+        //Yönetici email text box ını görünütler.
+        Assert.assertTrue(anasayfaPages.signInEmailKutusu.isDisplayed());
+        //Yönetici password text box ını görüntüler.
+        Assert.assertTrue(anasayfaPages.signInPasswordKutusu.isDisplayed());
+        //Yönetici remember me checkbox ını görüntüler.
+        Assert.assertTrue(anasayfaPages.signInRemembermeBox.isDisplayed());
+        //Sayfayı kapatır
+        Driver.quitDriver();
+    }
+
 }
 

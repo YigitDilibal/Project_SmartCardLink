@@ -30,4 +30,7 @@ public class AnasayfaPages {
     @FindBy (id = "remember_me")
     public WebElement signInRemembermeBox;
 
+    @FindBy(xpath = "//*[.='Sign In']")
+    public WebElement signInFormu;
+
 }
