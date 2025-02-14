@@ -31,5 +31,13 @@ public class AdminPages {
     @FindBy (xpath = "//*[@class='mb-1 text-decoration-none fs-6']")
     public List<WebElement> usersSekmesiKullaniciAdlariListesi;
 
+    @FindBy (xpath = "//*[@class='ml-4 text-lg text-gray-500 uppercase tracking-wider']")
+    public WebElement userDoesNotHaveTheRightRolesYazisi;
+
+    @FindBy (xpath = "//*[@class='svg-inline--fa fa-user-check fs-2']")
+    public WebElement impersonateLeaveButonu;
+
+
+
 
 }
