@@ -89,5 +89,30 @@ public class SumeyraUS19US21US22 {
         //Sayfayı kapatır.
         Driver.quitDriver();
     }
+
+    @Test
+    public  void rememberMeCheckboxTesti (){
+        //Yönetici URL ile siteye erişim sağlar
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        //Yönetici Sıgn ın linkini görüntüler ve sayfasına erişim sağlar.
+        anasayfaPages.homepageSıgnInButonu.click();
+        //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve mail kutusuna geçerli mail girer.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
+        //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        //Remember me check box ına tıklar.
+        anasayfaPages.signInRemembermeBox.click();
+        //Login tusuna basar
+        anasayfaPages.signInLoginButonu.click();
+        //Kendi sayfasına erişim saglar ve Sıgn out olur.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        //SıgnIn sayfasına geri gider.
+        Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
+        //Email ve Password kutucugunun otomatik dolduğunu doğrular ve login olur.
+        anasayfaPages.signInLoginButonu.click();
+        //sayfayı kapatır.
+        Driver.quitDriver();
+    }
 }
 
