@@ -11,4 +11,6 @@ public class UserPages {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    @FindBy (xpath = "(//*[.='Enquiries'])[1]")
+    public WebElement dahbordPanelEnguiriesButonu;
 }
