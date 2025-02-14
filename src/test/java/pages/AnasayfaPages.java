@@ -22,7 +22,10 @@ public class AnasayfaPages {
     public WebElement signInLoginButonu;
 
     @FindBy (xpath = "//*[@class='bi bi-eye-slash-fill']")
-    public WebElement signInBieyeSlashFill;
+    public WebElement signInBieyeSlashFillpasswordHide;
+
+    @FindBy (xpath = "//*[@class='bi bi-eye-fill']" )
+    public WebElement signInBieyeSlashFillpasswordShow;
 
     @FindBy (id = "remember_me")
     public WebElement signInRemembermeBox;
