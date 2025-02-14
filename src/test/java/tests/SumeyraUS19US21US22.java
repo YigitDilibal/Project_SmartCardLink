@@ -60,6 +60,7 @@ public class SumeyraUS19US21US22 {
         //Yönetici URL ile siteye erişir
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         //Yönetici Sıgn ın linkine tıklayın ve  Sıgn ın sayfasına erişim sağlayın
+        ReusableMethods.bekle(2);
         anasayfaPages.homepageSıgnInButonu.click();
         //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçerli mail girer.
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
@@ -77,6 +78,7 @@ public class SumeyraUS19US21US22 {
     public void manditoryFieldTest(){
         //Yönetici URL ile siteye erişim sağlar
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+        ReusableMethods.bekle(2);
         //Yönetici Sıgn ın linkini görüntüler ve Sıgn ın sayfasına erişim sağlar.
         anasayfaPages.homepageSıgnInButonu.click();
         //Sıgn ın sayfasında Email kutusunun boş bırakır.
@@ -95,6 +97,7 @@ public class SumeyraUS19US21US22 {
         //Yönetici URL ile siteye erişim sağlar
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         //Yönetici Sıgn ın linkini görüntüler ve sayfasına erişim sağlar.
+        ReusableMethods.bekle(2);
         anasayfaPages.homepageSıgnInButonu.click();
         //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve mail kutusuna geçerli mail girer.
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
@@ -107,11 +110,29 @@ public class SumeyraUS19US21US22 {
         //Kendi sayfasına erişim saglar ve Sıgn out olur.
         adminPages.avatarDropdownMenuButonu.click();
         adminPages.signOutButonu.click();
-        //SıgnIn sayfasına geri gider.
-        Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
-        //Email ve Password kutucugunun otomatik dolduğunu doğrular ve login olur.
+        //SıgnIn sayfasına geri gider. Email ve Password kutucugunun otomatik dolduğunu doğrular ve login olur.
         anasayfaPages.signInLoginButonu.click();
+        Assert.assertTrue(adminPages.signOutButonu.isEnabled());
         //sayfayı kapatır.
+        Driver.quitDriver();
+    }
+    @Test
+    public void bieyeFillTest (){
+        //Yönetici URL ile siteye erişir
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
+        anasayfaPages.homepageSıgnInButonu.click();
+        //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçerli mail girer.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
+        //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        //Bi-eye-fill ikonuna tıklamadan önce şifresinin maskelenmiş olarak  (••••••••) gösterildiğini doğrular.
+        Assert.assertTrue(anasayfaPages.signInBieyeSlashFillpasswordHide.isEnabled());
+        //Bi-eye-fill ikonuna tıkladıktan sonra ve be-eye-fill ikonun değiştiğini doğrular şifresini görüntüler.
+        anasayfaPages.signInBieyeSlashFillpasswordHide.click();
+        ReusableMethods.bekle(2);
+        Assert.assertTrue(anasayfaPages.signInBieyeSlashFillpasswordShow.isEnabled());
+        //Sayfayı kapatır.
         Driver.quitDriver();
     }
 }
