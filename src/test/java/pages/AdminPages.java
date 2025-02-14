@@ -37,7 +37,8 @@ public class AdminPages {
     @FindBy (xpath = "//*[@class='svg-inline--fa fa-user-check fs-2']")
     public WebElement impersonateLeaveButonu;
 
-
+    @FindBy (xpath = "//span[contains(text(), 'Bağlı Kullanıcılar')]")
+    public WebElement adminSekmesiBagliKullanicilarButonu;
 
 
 }
