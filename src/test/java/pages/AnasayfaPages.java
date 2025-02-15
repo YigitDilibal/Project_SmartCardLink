@@ -33,4 +33,6 @@ public class AnasayfaPages {
     @FindBy(xpath = "//*[.='Sign In']")
     public WebElement signInFormu;
 
+
+
 }
