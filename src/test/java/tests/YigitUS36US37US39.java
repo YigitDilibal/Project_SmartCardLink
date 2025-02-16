@@ -27,9 +27,16 @@ import java.time.Duration;
 
 public class YigitUS36US37US39 {
 
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
+    AnasayfaPages anasayfaPages;
+    AdminPages adminPages;
+    UserPages userPages;
+
+    @BeforeMethod
+    public void setup(){
+      anasayfaPages = new AnasayfaPages();
+      adminPages = new AdminPages();
+      userPages = new UserPages();
+    }
 
 
     // ========== US 36 ==========
@@ -42,10 +49,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC01KullaniciListesiGoruntulenmeTesti(){
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -77,9 +80,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC02ImpersonateModunaGecisTesti(){
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -120,9 +120,6 @@ public class YigitUS36US37US39 {
     @Test
     public void US36TC03ImpersonateModundaYetkiKontroluTesti(){
 
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -157,10 +154,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC04ImpersonateModundanCikisTesti(){
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -207,10 +200,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC05ImpersonateModundaVeriGuncellemeVeSilmeTesti(){
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -291,10 +280,6 @@ public class YigitUS36US37US39 {
     @Test
     public void US36TC04ImpersonateModundaSifreDegistirmeTesti(){
 
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
-
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -362,10 +347,6 @@ public class YigitUS36US37US39 {
     @Test
     public void US37TC01AffiliationsSekmesineErisimTesti(){
 
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
-
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -393,10 +374,6 @@ public class YigitUS36US37US39 {
     @Test
     public void US37TC02ToplamVeGuncelBakiyeGoruntulemeTesti(){
 
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
-
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -423,10 +400,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC03DavetBaglantisiTesti(){
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        AdminPages adminPages = new AdminPages();
-        UserPages userPages = new UserPages();
 
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -462,9 +435,6 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC04DavetBaglantisiIleKayitSayfasinaYonlendirmeTesti() throws IOException, UnsupportedFlavorException {
-
-        AnasayfaPages anasayfaPages = new AnasayfaPages();
-        UserPages userPages = new UserPages();
 
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
