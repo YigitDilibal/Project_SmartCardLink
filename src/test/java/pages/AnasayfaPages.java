@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class AnasayfaPages {
     public AnasayfaPages(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -32,5 +34,8 @@ public class AnasayfaPages {
 
     @FindBy(xpath = "//*[.='Sign In']")
     public WebElement signInFormu;
+
+    @FindBy(xpath = "//footer//li/a")
+    public List<WebElement> socialMediaIcons;
 
 }
