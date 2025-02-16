@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AdminPages;
 import pages.AnasayfaPages;
@@ -26,9 +27,16 @@ import java.time.Duration;
 
 public class YigitUS36US37US39 {
 
-    AnasayfaPages anasayfaPages = new AnasayfaPages();
-    AdminPages adminPages = new AdminPages();
-    UserPages userPages = new UserPages();
+    AnasayfaPages anasayfaPages;
+    AdminPages adminPages;
+    UserPages userPages;
+
+    @BeforeMethod
+    public void setup(){
+      anasayfaPages = new AnasayfaPages();
+      adminPages = new AdminPages();
+      userPages = new UserPages();
+    }
 
 
     // ========== US 36 ==========
@@ -41,6 +49,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC01KullaniciListesiGoruntulenmeTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -71,6 +80,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC02ImpersonateModunaGecisTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -109,6 +119,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC03ImpersonateModundaYetkiKontroluTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -143,6 +154,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC04ImpersonateModundanCikisTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -188,6 +200,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC05ImpersonateModundaVeriGuncellemeVeSilmeTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -265,7 +278,8 @@ public class YigitUS36US37US39 {
     // Impersonate modunda kullanıcı şifre değiştirme testi(negatif)
 
     @Test
-    public void US36TC04ImpersonateModundaSifreDegistirmeTesti(){
+    public void US36TC06ImpersonateModundaSifreDegistirmeTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -332,6 +346,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC01AffiliationsSekmesineErisimTesti(){
+
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -358,6 +373,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC02ToplamVeGuncelBakiyeGoruntulemeTesti(){
+
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -384,6 +400,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC03DavetBaglantisiTesti(){
+
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -418,6 +435,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US37TC04DavetBaglantisiIleKayitSayfasinaYonlendirmeTesti() throws IOException, UnsupportedFlavorException {
+
         //Kullanici login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
