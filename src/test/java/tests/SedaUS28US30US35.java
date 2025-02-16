@@ -27,7 +27,7 @@ public class SedaUS28US30US35 {
 
         // Yukarıdaki adımlarla admin girişi yapılmış oldu ve dashboard sayfasına erişim sağlandı
 
-        adminPages.adminSekmesiSubscribedUserButonu.click();
+        adminPages.adminSekmesiSubscribedUserButonu.click(); // Abone kullanıcılar sekmesine erişildi
 
 
 
