@@ -66,7 +66,7 @@ public void us18_UyelikSatinAlmaTesti() {
     userPages.cardHolderNameInput.sendKeys(ConfigReader.getProperty("cardHolderName"));
     userPages.userSubscriptionPayButton.click();
 
-    Assert.
+
 
 
 
