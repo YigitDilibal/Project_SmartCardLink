@@ -278,7 +278,7 @@ public class YigitUS36US37US39 {
     // Impersonate modunda kullanıcı şifre değiştirme testi(negatif)
 
     @Test
-    public void US36TC04ImpersonateModundaSifreDegistirmeTesti(){
+    public void US36TC06ImpersonateModundaSifreDegistirmeTesti(){
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
