@@ -57,5 +57,8 @@ public class UserPages {
     @FindBy (xpath = "//*[.='Deleted !']")
     public WebElement vCardsSayfasiDeletedUyarisi;
 
+    @FindBy (id = "changeLanguage")
+    public WebElement userDashboardLanguageChangeButton;
+
 
 }
