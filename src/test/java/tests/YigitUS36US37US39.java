@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AdminPages;
 import pages.AnasayfaPages;
@@ -26,9 +27,9 @@ import java.time.Duration;
 
 public class YigitUS36US37US39 {
 
-    AnasayfaPages anasayfaPages = new AnasayfaPages();
-    AdminPages adminPages = new AdminPages();
-    UserPages userPages = new UserPages();
+        AnasayfaPages anasayfaPages = new AnasayfaPages();
+        AdminPages adminPages = new AdminPages();
+        UserPages userPages = new UserPages();
 
 
     // ========== US 36 ==========
@@ -44,6 +45,7 @@ public class YigitUS36US37US39 {
 
         AnasayfaPages anasayfaPages = new AnasayfaPages();
         AdminPages adminPages = new AdminPages();
+        UserPages userPages = new UserPages();
 
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
