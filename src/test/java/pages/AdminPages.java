@@ -40,5 +40,10 @@ public class AdminPages {
     @FindBy (xpath = "//span[contains(text(), 'Bağlı Kullanıcılar')]")
     public WebElement adminSekmesiBagliKullanicilarButonu;
 
+    @FindBy (xpath = "//span[contains(text(), 'Abone Olunan Kullanıcı Planları')]")
+    public WebElement adminSekmesiSubscribedUserButonu;
+
+    @FindBy (id = "logout-form")
+    public WebElement adminOturumuKapatButonu;
 
 }

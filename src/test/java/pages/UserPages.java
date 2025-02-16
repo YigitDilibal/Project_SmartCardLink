@@ -81,11 +81,7 @@ public class UserPages {
     @FindBy (xpath = "//*[@class='toast-close-button']")
     public WebElement affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu;
 
-
-
-
-
-
-
+    @FindBy (id = "changeLanguage")
+    public WebElement userDashboardLanguageChangeButton;
 
 }

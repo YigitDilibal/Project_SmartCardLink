@@ -9,6 +9,8 @@ import utilities.Driver;
 
 public class SedaUS28US30US35 {
 
+    // US28 TC01
+
     AnasayfaPages anasayfaPages = new AnasayfaPages();
     AdminPages adminPages = new AdminPages();
     UserPages userPages = new UserPages();
@@ -25,7 +27,9 @@ public class SedaUS28US30US35 {
 
         // Yukarıdaki adımlarla admin girişi yapılmış oldu ve dashboard sayfasına erişim sağlandı
 
-        adminPages.adminSekmesiBagliKullanicilarButonu.click();
+        adminPages.adminSekmesiSubscribedUserButonu.click(); // Abone kullanıcılar sekmesine erişildi
+
+
 
 
     }
