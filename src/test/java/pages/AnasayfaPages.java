@@ -37,5 +37,4 @@ public class AnasayfaPages {
 
     @FindBy(xpath = "//footer//li/a")
     public List<WebElement> socialMediaIcons;
-
 }

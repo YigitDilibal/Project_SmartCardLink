@@ -1,9 +1,14 @@
 package tests;
 
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AdminPages;
 import pages.AnasayfaPages;
@@ -12,12 +17,31 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.time.Duration;
+
 public class YigitUS36US37US39 {
 
-    AnasayfaPages anasayfaPages = new AnasayfaPages();
-    AdminPages adminPages = new AdminPages();
-    UserPages userPages = new UserPages();
+    AnasayfaPages anasayfaPages;
+    AdminPages adminPages;
+    UserPages userPages;
 
+    @BeforeMethod
+    public void setup(){
+      anasayfaPages = new AnasayfaPages();
+      adminPages = new AdminPages();
+      userPages = new UserPages();
+    }
+
+
+    // ========== US 36 ==========
+    // Bir yönetici olarak Dashboard sayfamda sitedeki kayıtlı kullanıcıların kimliğine bürünerek
+    // onlar adına işlem yapabilmek istiyorum.
 
 
     // US36 - Test Case 01
@@ -25,6 +49,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC01KullaniciListesiGoruntulenmeTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -55,6 +80,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC02ImpersonateModunaGecisTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -93,6 +119,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC03ImpersonateModundaYetkiKontroluTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -127,6 +154,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC04ImpersonateModundanCikisTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -161,7 +189,6 @@ public class YigitUS36US37US39 {
 
         Assert.assertEquals(impersonateOncesiIsim,impersonateSonrasiIsim);
 
-
         //sign out olur ve sayfayı kapatır.
         adminPages.avatarDropdownMenuButonu.click();
         adminPages.signOutButonu.click();
@@ -173,6 +200,7 @@ public class YigitUS36US37US39 {
 
     @Test
     public void US36TC05ImpersonateModundaVeriGuncellemeVeSilmeTesti(){
+
         //Admin login sayfasına gider.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
@@ -245,6 +273,214 @@ public class YigitUS36US37US39 {
         adminPages.signOutButonu.click();
         Driver.quitDriver();
     }
+
+    // US36 - Test Case 06
+    // Impersonate modunda kullanıcı şifre değiştirme testi(negatif)
+
+    @Test
+    public void US36TC06ImpersonateModundaSifreDegistirmeTesti(){
+
+        //Admin login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Super admin giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "User" sekmesine tıklar.
+        adminPages.dashboardSolPanelUsersButonu.click();
+        String impersonateOncesiIsim = adminPages.avatarDropdownMenuButonu.getText();
+
+        //"Impersonate" butonuna tıklar.
+
+        adminPages.usersSekmesiImpersonateButonlariListesi.get(0).click();
+
+        //Sağ üstteki profil adına tıklar.
+
+        adminPages.avatarDropdownMenuButonu.click();
+
+        //"Change Password" butonunun görüntülenmediğini test eder.
+
+//  => ImplicitlyWait kaynakli 10 Saniye beklettigi icin yontem iptal.
+//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(0));
+//        boolean elementYokmu = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("changePassword")));
+//        Assert.assertTrue(elementYokmu);
+
+//  => bu da 10 saniye bekletiyor
+//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
+//        wait.pollingEvery(Duration.ofMillis(10));
+//        wait.ignoring(NoSuchElementException.class);
+//
+//        boolean elementYokmu = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("changePassword")));
+//        Assert.assertTrue(elementYokmu);
+
+// change password icin element list olusturup isEmpty deyince yine implicitly waite takiliyor.
+// implicitliyi gecici olarak sifirlayip islemden sonra eski hale getirecegim.
+
+        Duration mevcutImplicitWait = Driver.getDriver().manage().timeouts().getImplicitWaitTimeout();
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+
+        Assert.assertTrue(userPages.changePasswordButonuListesi.isEmpty());
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(mevcutImplicitWait);
+
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // ================================================================================================
+
+
+    // ========== US 37 ==========
+    // Sınırsız özellikli kayıtlı kullanıcı olarak affilation menüsüne  ulaşabildiğimi,
+    // toplam ve güncel tutarları görünütleyebilidğimi, davetiye gönderebildiğimi,
+    // para çekme işlemi yapabildiğimi doğrulayabilmeliyim
+
+
+    // US37 - Test Case 01
+    // Affiliations sekmesine erişim testi
+
+    @Test
+    public void US37TC01AffiliationsSekmesineErisimTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //"Affiliations" sayfasının düzgün bir şekilde görüntülendiğini test eder.
+        Assert.assertTrue(userPages.affiliationsSayfasiTitle.isDisplayed());
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US37 - Test Case 02
+    // Toplam ve güncel bakiyeyi görüntüleme testi.
+
+    @Test
+    public void US37TC02ToplamVeGuncelBakiyeGoruntulemeTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        // Sayfada toplam ve güncel bakiyeyi kontrol eder.
+        Assert.assertEquals(userPages.affiliationsSayfasiToplamVeGuncelBakiyeYazilariListesi.size(),2);
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US37 - Test Case 03
+    // Davet bağlantısını görüntüleme ve kopyalama testi.
+
+    @Test
+    public void US37TC03DavetBaglantisiTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //Davet bağlantısının görüntülendiğini kontrol eder.
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetBaglantisiElementi.isDisplayed());
+
+        //"Copy" butonuna tıklar.
+        userPages.affiliationsSayfasiDavetBaglantisiCopyButonu.click();
+
+        //Bağlantının kopyalandığını doğrular
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesaji.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+    // US37 - Test Case 04
+    // Davet Bağlantısı ile kayıt sayfasına yönlendirme testi.
+
+    @Test
+    public void US37TC04DavetBaglantisiIleKayitSayfasinaYonlendirmeTesti() throws IOException, UnsupportedFlavorException {
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //"Copy" butonuna tıklar.
+        userPages.affiliationsSayfasiDavetBaglantisiCopyButonu.click();
+
+        // Kopyalanan bağlantıyı alır.
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        String kopyalananBaglanti = (String) clipboard.getData(DataFlavor.stringFlavor);
+
+        //Yeni bir gizli sekme açar ve bağlantıya gider.
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        WebDriver gizliDriver = new ChromeDriver(options);
+
+        gizliDriver.get(kopyalananBaglanti);
+
+        //Acilan baglantinin kayit sayfasini actigini test eder.
+
+        WebDriverWait wait = new WebDriverWait(gizliDriver, Duration.ofSeconds(10));
+        WebElement kayitSayfasiTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[.='Create an Account']")));
+
+        Assert.assertTrue(kayitSayfasiTitle.isDisplayed());
+
+        // driverleri kapatir.
+
+        gizliDriver.quit();
+        Driver.quitDriver();
+
+    }
+
+
+
+
+
 
 
 
