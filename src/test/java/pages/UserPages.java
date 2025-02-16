@@ -57,8 +57,31 @@ public class UserPages {
     @FindBy (xpath = "//*[.='Deleted !']")
     public WebElement vCardsSayfasiDeletedUyarisi;
 
+    @FindBy (id = "changePassword")
+    public List<WebElement> changePasswordButonuListesi;
+
+    @FindBy (xpath = "//span[.='Affiliations']")
+    public WebElement solPanelAffiliationsButonu;
+
+    @FindBy (xpath = "//h1[.='Affiliations']")
+    public WebElement affiliationsSayfasiTitle;
+
+    @FindBy (xpath = "//*[@class='fw-bolder text-white']")
+    public List<WebElement> affiliationsSayfasiToplamVeGuncelBakiyeYazilariListesi;
+
+    @FindBy (id = "urlLink")
+    public WebElement affiliationsSayfasiDavetBaglantisiElementi;
+
+    @FindBy (id = "copyLinkBtn")
+    public WebElement affiliationsSayfasiDavetBaglantisiCopyButonu;
+
+    @FindBy (xpath = "//*[.='Link copied successfully.']")
+    public WebElement affiliationsSayfasiDavetKopyalandiOnayMesaji;
+
+    @FindBy (xpath = "//*[@class='toast-close-button']")
+    public WebElement affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu;
+
     @FindBy (id = "changeLanguage")
     public WebElement userDashboardLanguageChangeButton;
-
 
 }
