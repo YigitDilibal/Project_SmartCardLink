@@ -44,7 +44,7 @@ public class UserPages {
     @FindBy (id = "billingName")
     public WebElement cardHolderNameInput ;
 
-    @FindBy (class = "SubmitButton-IconContainer") //*[@class="SubmitButton-IconContainer"]
+    @FindBy (className = "SubmitButton-IconContainer") //*[@class="SubmitButton-IconContainer"]
     public WebElement userSubscriptionPayButton ;
 
 
@@ -55,14 +55,7 @@ public class UserPages {
 
 
 
-    ]
-
-   // @FindBy (xpath ="//*[@id='cardNumber']")
-    //public WebElement user
 
 
-
-    //*[@class="svg-inline--fa fa-money-bill"]
-    //a[@class="btn btn-primary"]
 
 }
