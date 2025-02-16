@@ -37,4 +37,18 @@ public class AnasayfaPages {
 
     @FindBy(xpath = "//footer//li/a")
     public List<WebElement> socialMediaIcons;
+
+    @FindBy(xpath = "//*[@class='form-control bg-white']")
+    public WebElement homepageSubscribeEnterEmailBox;
+
+    @FindBy(xpath = "//*[.='Subscribe']")
+    public WebElement homepageSubscribeButton;
+
+    @FindBy(xpath = "//*[.='Success']")
+    public WebElement homepageSubscribeSuccessAlert;
+
+
+
+
+
 }
