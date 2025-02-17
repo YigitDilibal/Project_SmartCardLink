@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.AdminPages;
 import pages.AnasayfaPages;
 import pages.UserPages;
@@ -476,6 +477,104 @@ public class YigitUS36US37US39 {
         Driver.quitDriver();
 
     }
+
+    // US37 - Test Case 05
+    // E-posta davet maili testi.
+
+    @Test
+    public void US37TC05EpostaDavetMailiTesti() {
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //"Send Invite" butonuna tıklar.
+        userPages.affiliationsSayfasiSendInviteButonu.click();
+
+        //Kullanıcı geçerli bir e-posta adresi girer.
+        userPages.affiliationsSayfasiSendInviteBolumuEmailKutusu.sendKeys("archery10@outlook.com");
+        ReusableMethods.bekle(1);
+
+        //"Send Email" butonuna tıklar.
+        userPages.affiliationsSayfasiSendInviteBolumuSubmitButonu.click();
+
+        //Mailin gönderildiğine dair bir onay mesajı gösterildigini test eder.
+        //sayfanin yapisinda onay mesaji olmadigi icin farkli bir onay mesaji locate'ini kullaniyorum.
+        Duration mevcutImplicitWait = Driver.getDriver().manage().timeouts().getImplicitWaitTimeout();
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+
+        SoftAssert softAssert = new SoftAssert();
+
+        try {
+            softAssert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesaji.isDisplayed(),"Davet maili onay mesaji cikmadi");
+        } catch (Exception e) {
+            softAssert.fail("Davet maili onay mesaji cikmadi");
+        }
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(mevcutImplicitWait);
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+
+        try {
+            softAssert.assertAll();
+        } finally {
+            Driver.quitDriver();
+        }
+    }
+
+    // US37 - Test Case 06
+    // Geçersiz E-posta adresi ile davet maili testi.
+
+    @Test
+    public void US37TC06GecersizMailIleDavetTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //"Send Invite" butonuna tıklar.
+        userPages.affiliationsSayfasiSendInviteButonu.click();
+
+        //Kullanıcı geçersiz bir e-posta adresi girer.
+        userPages.affiliationsSayfasiSendInviteBolumuEmailKutusu.sendKeys("asdasdasd");
+
+        //"Send Email" butonuna tıklar.
+        userPages.affiliationsSayfasiSendInviteBolumuSubmitButonu.click();
+
+        //Geçersiz adres girildiğinde mail gitmediğini doğrular.
+        Assert.assertTrue(userPages.affiliationsSayfasiSendInviteBolumuCloseButonu.isDisplayed());
+
+        //Close tusuna basip kapatir
+        ReusableMethods.bekle(1);
+        userPages.affiliationsSayfasiSendInviteBolumuCloseButonu.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+
+
 
 
 
