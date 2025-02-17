@@ -28,7 +28,7 @@ public class UserPages {
     @FindBy (xpath ="(//*[@role='combobox'])[1]")
     public WebElement userSubscriptionSelectPaymentDdwButton ;
 
-    @FindBy (xpath="//li[@id='select2-paymentType-result-evjt-1']")
+    @FindBy (xpath="(//li[contains(@id, 'select2-paymentType-result')])[1]\n")
     public  WebElement userSubscriptionDropdownStripeButton;
 
     @FindBy (xpath="//*[@class='mt-5 stripePayment proceed-to-payment']")
@@ -46,7 +46,7 @@ public class UserPages {
     @FindBy (id = "billingName")
     public WebElement cardHolderNameInput ;
 
-    @FindBy (className = "SubmitButton-IconContainer") //*[@class="SubmitButton-IconContainer"]
+    @FindBy (className = "SubmitButton-IconContainer")
     public WebElement userSubscriptionPayButton ;
 
     @FindBy (id = "dropdownMenuButton1")
@@ -120,5 +120,13 @@ public class UserPages {
 
     @FindBy (id = "changeLanguage")
     public WebElement userDashboardLanguageChangeButton;
+
+    @FindBy (xpath = "//*[@class='payment-title mb-3']")
+    public WebElement paymentSuccesfulMessage;
+
+    @FindBy (xpath = "//*[@class='btn mt-5 btn-back']")
+    public WebElement backToSubscriptionButton;
+
+
 
 }
