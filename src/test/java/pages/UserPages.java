@@ -121,12 +121,59 @@ public class UserPages {
     @FindBy (id = "changeLanguage")
     public WebElement userDashboardLanguageChangeButton;
 
-    @FindBy (xpath = "//*[@class='payment-title mb-3']")
+    @FindBy (id = "changePassword")
+    public WebElement changePasswordButonu;
+
+    @FindBy(xpath = "//*[@name='current_password']")
+    public WebElement parolaDegistirmeFormuCurrentPasswordTextBox;
+
+    @FindBy(xpath = "//*[@name='new_password']")
+    public WebElement parolaDegistirmeFormuNewPasswordTextBox;
+
+    @FindBy(xpath = "//*[@name='confirm_password']")
+    public WebElement parolaDegistirmeFormuConfirmPasswordTextBox;
+
+    @FindBy(id = "passwordChangeBtn")
+    public WebElement parolaDegiştirmeFormuSaveButonu;
+
+    @FindBy(xpath = "(//*[@type='button'])[13]")
+    public WebElement parolaDegiştirmeFormuDiscardButonu;
+
+    @FindBy(xpath = "(//*[@class='bi bi-eye-slash-fill'])")
+    public List<WebElement> biEyeFillHide;
+
+    @FindBy(xpath = "(//*[@class='bi bi-eye-fill'])")
+    public List<WebElement> biEyeFillShow;
+
+    @FindBy(xpath = "//*[@class='toast-message']")
+    public WebElement parolaDeğişimMesajı;
+
+    @FindBy (xpath ="//*[@class='toast-title']" )
+    public WebElement parolaDeğişimBaşlığı;
+
+    @FindBy (xpath = "(//*[@class='btn-close'])[2]")
+    public WebElement parolaDeğişimFormuKapatmaXbutonu;
+
+    @FindBy (id = "changePasswordForm")
+    public WebElement parolaDegişimFormu;
+
+    @FindBy (xpath = "//*[@class='btn btn-primary sendInviteBtn']")
+    public WebElement affiliationsSayfasiSendInviteButonu;
+
+    @FindBy (xpath = "//*[@name='email']")
+    public WebElement affiliationsSayfasiSendInviteBolumuEmailKutusu;
+
+    @FindBy (xpath = "//*[@class='btn btn-primary sendmailbtn']")
+    public WebElement affiliationsSayfasiSendInviteBolumuSubmitButonu;
+
+    @FindBy (xpath = "(//*[@class='btn btn-secondary'])[2]")
+    public WebElement affiliationsSayfasiSendInviteBolumuCloseButonu;
+  
+      @FindBy (xpath = "//*[@class='payment-title mb-3']")
     public WebElement paymentSuccesfulMessage;
 
     @FindBy (xpath = "//*[@class='btn mt-5 btn-back']")
     public WebElement backToSubscriptionButton;
-
 
 
 }
