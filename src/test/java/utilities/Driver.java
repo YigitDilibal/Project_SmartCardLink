@@ -1,5 +1,6 @@
 package utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -23,6 +24,8 @@ public class Driver {
         String kullanilacakBrowser = ConfigReader.getProperty("browser");
 
         if (driver == null) {
+
+            WebDriverManager.chromedriver().setup();
 
             switch (kullanilacakBrowser){
                 case "safari" :
