@@ -65,4 +65,226 @@ public class TugbaUS01US02 {
         Assert.assertEquals(expectedLink, actualLink);
         ReusableMethods.bekle(3);
     }
+
+    @Test
+    public void Test02() {
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        driver.findElement(By.xpath("//*[@class='btn btn-white fs-18 ms-3 d-lg-block d-none']")).click();
+
+        ReusableMethods.bekle(2);
+
+        WebElement eMailKutusu = driver.findElement(By.id("email"));
+
+        Actions actions = new Actions(driver);
+
+        ReusableMethods.bekle(1);
+
+        actions.click(eMailKutusu)
+                .sendKeys("tugba@smartcardlink.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .keyDown(Keys.SHIFT)
+                .sendKeys("S")
+                .keyUp(Keys.SHIFT)
+                .sendKeys("mart.1202")
+                .perform();
+
+        ReusableMethods.bekle(2);
+
+        WebElement loginButonu = driver.findElement(By.xpath("//*[@class='btn btn-primary']"));
+        loginButonu.click();
+
+        ReusableMethods.bekle(3);
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        ReusableMethods.bekle(3);
+
+        //WebElement getStartedButonu = driver.findElement(By.xpath("//input[@class='btn btn-orange']"));
+        driver.findElement(By.xpath("//a[@class='btn btn-orange ']")).click();
+
+        // Assertions.assertTrue(getStartedButonu.isDisplayed());
+        ReusableMethods.bekle(2);
+        //getStartedButonu.click();
+        //ReusableMethods.bekle(2);
+
+        String expectedUrl = "https://qa.smartcardlink.com/admin/dashboard";
+        String actuallUrl = driver.getCurrentUrl();
+
+        Assert.assertEquals(expectedUrl,actuallUrl);
+
+        ReusableMethods.bekle(2);
+
+    }
+
+    @Test
+    public void Test03() {
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        driver.findElement(By.xpath("//*[@class='btn btn-white fs-18 ms-3 d-lg-block d-none']")).click();
+
+        ReusableMethods.bekle(2);
+
+        WebElement eMailKutusu = driver.findElement(By.id("email"));
+
+        Actions actions = new Actions(driver);
+
+        ReusableMethods.bekle(1);
+
+        actions.click(eMailKutusu)
+                .sendKeys("tugba@smartcardlink.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .keyDown(Keys.SHIFT)
+                .sendKeys("S")
+                .keyUp(Keys.SHIFT)
+                .sendKeys("mart.1202")
+                .perform();
+
+        ReusableMethods.bekle(2);
+
+        WebElement loginButonu = driver.findElement(By.xpath("//*[@class='btn btn-primary']"));
+        loginButonu.click();
+
+        ReusableMethods.bekle(3);
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        ReusableMethods.bekle(3);
+
+        WebElement contact = driver.findElement(By.xpath("(//a[@class='nav-link mt-1'])[4]"));
+
+        contact.click();
+
+        String expectedLink = "https://qa.smartcardlink.com/#frontContactUsTab";
+        String actualLink = driver.getCurrentUrl();
+
+        Assert.assertEquals(expectedLink,actualLink);
+
+        WebElement contactText = driver.findElement(By.xpath("//*[@class='heading text-success text-center margin-b-80px mb-5']"));
+
+        String expectedText = "Contact Us";
+        String actuallText = contactText.getText();
+
+        Assert.assertEquals(expectedText,actuallText);
+
+        ReusableMethods.bekle(3);
+
+
+    }
+
+    @Test
+    public void Test04() {
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        driver.findElement(By.xpath("//*[@class='btn btn-white fs-18 ms-3 d-lg-block d-none']")).click();
+
+        ReusableMethods.bekle(2);
+
+        WebElement eMailKutusu = driver.findElement(By.id("email"));
+
+        Actions actions = new Actions(driver);
+
+        ReusableMethods.bekle(1);
+
+        actions.click(eMailKutusu)
+                .sendKeys("tugba@smartcardlink.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .keyDown(Keys.SHIFT)
+                .sendKeys("S")
+                .keyUp(Keys.SHIFT)
+                .sendKeys("mart.1202")
+                .perform();
+
+        ReusableMethods.bekle(2);
+
+        WebElement loginButonu = driver.findElement(By.xpath("//*[@class='btn btn-primary']"));
+        loginButonu.click();
+
+        ReusableMethods.bekle(3);
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        ReusableMethods.bekle(3);
+
+        WebElement pricing = driver.findElement(By.xpath("(//*[@class='nav-link mt-1'])[3]"));
+
+        pricing.click();
+        ReusableMethods.bekle(2);
+
+        String expectedLink = "https://qa.smartcardlink.com/#frontPricingTab";
+        String actualLink = driver.getCurrentUrl();
+
+        Assert.assertEquals(expectedLink,actualLink);
+        ReusableMethods.bekle(2);
+
+        String expectedText = "Choose a plan that's right for you";
+
+        String actualText = driver.findElement(By.xpath("(//h2[@class='text-dark text-center mb-60'])[2]")).getText();
+
+        Assert.assertEquals(expectedText,actualText);
+        ReusableMethods.bekle(2);
+
+    }
+
+    @Test
+    public void Test05() {
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        driver.findElement(By.xpath("//*[@class='btn btn-white fs-18 ms-3 d-lg-block d-none']")).click();
+
+        ReusableMethods.bekle(2);
+
+        WebElement eMailKutusu = driver.findElement(By.id("email"));
+
+        Actions actions = new Actions(driver);
+
+        ReusableMethods.bekle(1);
+
+        actions.click(eMailKutusu)
+                .sendKeys("tugba@smartcardlink.com")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .keyDown(Keys.SHIFT)
+                .sendKeys("S")
+                .keyUp(Keys.SHIFT)
+                .sendKeys("mart.1202")
+                .perform();
+
+        ReusableMethods.bekle(2);
+
+        WebElement loginButonu = driver.findElement(By.xpath("//*[@class='btn btn-primary']"));
+        loginButonu.click();
+
+        ReusableMethods.bekle(3);
+
+        driver.get("https://qa.smartcardlink.com/");
+
+        ReusableMethods.bekle(3);
+
+        WebElement about = driver.findElement(By.xpath("(//a[@class='nav-link mt-1'])[2]"));
+
+        about.click();
+        ReusableMethods.bekle(2);
+
+        String expectedLink = "https://qa.smartcardlink.com/#frontAboutTabUsTab";
+        String actualLink = driver.getCurrentUrl();
+
+        Assert.assertEquals(expectedLink, actualLink);
+        ReusableMethods.bekle(2);
+
+        String expectedText = "About SmartCard";
+
+        String actualText = driver.findElement(By.id("frontAboutTabUsTab")).getText();
+
+        Assert.assertEquals(expectedText, actualText);
+        ReusableMethods.bekle(2);
+
+    }
 }
