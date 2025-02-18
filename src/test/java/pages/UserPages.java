@@ -175,5 +175,14 @@ public class UserPages {
     @FindBy (xpath = "//*[@class='btn mt-5 btn-back']")
     public WebElement backToSubscriptionButton;
 
+    @FindBy (xpath = "//select[@class='form-control form-select select2-hidden-accessible']")
+    public WebElement languageChangeSelectionModal;
+
+    @FindBy (id = "languageChangeBtn")
+    public WebElement languageChangeSaveButtonu;
+
+    @FindBy (xpath = "//span[contains(text(), 'Austragen')]")
+    public WebElement germanSıgnOutButton;
+
 
 }
