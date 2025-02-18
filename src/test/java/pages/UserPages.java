@@ -202,14 +202,20 @@ public class UserPages {
     @FindBy (xpath = "//*[@class='CurrencyAmount']")
     public WebElement purchaseUnlimitedPlanPrice;//*[@class="CurrencyAmount"]
 
+    @FindBy (xpath = "//select[@class='form-control form-select select2-hidden-accessible']")
+    public WebElement languageChangeSelectionModal;
 
-    //*[@class='CurrencyAmount']
+    @FindBy (id = "languageChangeBtn")
+    public WebElement languageChangeSaveButtonu;
 
+    @FindBy (xpath = "//span[contains(text(), 'Austragen')]")
+    public WebElement germanSıgnOutButton;
 
+    @FindBy(xpath = "//*[@class='toast-title']")
+    public WebElement dilDeğişimBaslıgı;
 
-
-
-
+    @FindBy(xpath = "(//*[@type='button'])[11]")
+    public WebElement dilDegişimDiscardButonu;
 
 
 }
