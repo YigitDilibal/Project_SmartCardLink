@@ -43,7 +43,7 @@ public class YigitUS36US37US39 {
 
     // ========== US 36 ==========
     // Bir yönetici olarak Dashboard sayfamda sitedeki kayıtlı kullanıcıların kimliğine bürünerek
-    // onlar adına işlem yapabilmek istiyorum. test
+    // onlar adına işlem yapabilmek istiyorum.
 
 
     // US36 - Test Case 01
