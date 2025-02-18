@@ -184,5 +184,10 @@ public class UserPages {
     @FindBy (xpath = "//span[contains(text(), 'Austragen')]")
     public WebElement germanSıgnOutButton;
 
+    @FindBy(xpath = "//*[@class='toast-title']")
+    public WebElement dilDeğişimBaslıgı;
+
+    @FindBy(xpath = "(//*[@type='button'])[11]")
+    public WebElement dilDegişimDiscardButonu;
 
 }
