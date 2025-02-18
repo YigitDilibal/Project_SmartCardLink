@@ -47,6 +47,12 @@ public class AnasayfaPages {
     @FindBy(xpath = "//*[.='Success']")
     public WebElement homepageSubscribeSuccessAlert;
 
+    @FindBy (id = "password_confirmation")
+    public WebElement kayitSayfasiConfirmPassword;
+
+    @FindBy (id = "privacyPolicyCheckbox")
+    public WebElement kayitSayfasiTermsAndConditions;
+
 
 
 
