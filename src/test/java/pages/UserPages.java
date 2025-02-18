@@ -175,5 +175,41 @@ public class UserPages {
     @FindBy (xpath = "//*[@class='btn mt-5 btn-back']")
     public WebElement backToSubscriptionButton;
 
+    @FindBy (xpath = "//a[@data-id='3']")
+    public WebElement userSubscriptionGoldPlanButton;
+
+    @FindBy (xpath = "//*[@style='opacity: 1; height: auto; margin-top: 4px;']")
+    public WebElement subscriptionInvalidCardErrorMessage;
+
+    @FindBy (xpath = "//*[@class='InlineSVG Icon Header-backArrow mr2 Icon--sm']")
+    public WebElement subscriptionPurchaseBackButton;
+
+    @FindBy (xpath = "//*[@class='payment-text']")
+    public WebElement paymentCancelledMessage;
+
+    @FindBy (xpath = "//*[@class='btn payment-btn']")
+    public WebElement paymentFailureBackButton;
+
+    @FindBy (xpath = "(//*[@class='nav-link'])[2]")
+    public WebElement userSubscriptionUnlimitedTab;
+
+    @FindBy (xpath = "//*[@data-id='4']")
+    public WebElement userSubscriptionUnlimitedButton;
+
+    @FindBy (xpath = "(//*[@class='mb-2'])[4]")
+    public WebElement subscriptionUnlimitedPlanPrice;
+
+    @FindBy (xpath = "//*[@class='CurrencyAmount']")
+    public WebElement purchaseUnlimitedPlanPrice;//*[@class="CurrencyAmount"]
+
+
+    //*[@class='CurrencyAmount']
+
+
+
+
+
+
+
 
 }
