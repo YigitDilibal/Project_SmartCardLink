@@ -52,7 +52,23 @@ public class AnasayfaPages {
 
     @FindBy (id = "privacyPolicyCheckbox")
     public WebElement kayitSayfasiTermsAndConditions;
+    @FindBy (xpath = "//*[.='Terms & Conditions']")
+    public WebElement TermsConditionsSayfasi;
 
+    @FindBy (xpath = "//*[.='Privacy Policy']")
+    public WebElement PrivacyPolicySayfasi;
+
+    @FindBy (xpath = "//*[.='FAQ']")
+    public WebElement FAQSayfasi;
+
+    @FindBy (xpath = "//h1[.='Frequently Asked Questions (FAQ)']")
+    public WebElement TitleFAQSayfasi;
+
+    @FindBy (xpath = "//h1[.='Terms & Conditions']")
+    public WebElement TitleTermsCondition;
+
+    @FindBy (xpath = "//h1[.='Privacy Policy']")
+    public WebElement TitlePrivacyPolicySayfasi;
 
 
 
