@@ -218,4 +218,25 @@ public class UserPages {
     public WebElement dilDegişimDiscardButonu;
 
 
+    @FindBy(xpath = "(//a[@class='nav-link'])[2]")
+    public WebElement manageSubscriptionUnlimitedSekmesi;
+
+    @FindBy(xpath = "//a[@data-plan-price='149.99']")
+    public WebElement unlimitedPlanSwitchPlanButonu;
+
+    @FindBy (id = "withdrawal-tab")
+    public WebElement affilationsWithdrawalTab;
+
+    @FindBy(xpath = "//*[@data-bs-target='#withdrawAmountModal']")
+    public WebElement affilationsWithdrawAmountButton;
+
+    @FindBy (id = "withdrawAmount")
+    public WebElement withdrawAmountKutusu;
+
+    @FindBy (id = "paypalEmail")
+    public WebElement withdrawPaypalEmailKutusu;
+
+    @FindBy(xpath = "(//button[.='Save'])[1]")
+    public WebElement withdrawSaveButton;
+
 }

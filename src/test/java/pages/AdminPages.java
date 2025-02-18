@@ -46,4 +46,27 @@ public class AdminPages {
     @FindBy (id = "logout-form")
     public WebElement adminOturumuKapatButonu;
 
+    @FindBy (xpath = "(//*[.='Affiliation Transactions'])[1]")
+    public WebElement affilationTransactionsSekmesi;
+
+    @FindBy (id = "dropdownMenuLink")
+    public List<WebElement> approvalStatusList ;
+
+    @FindBy (id = "approveWithdrawalBtn")
+    public WebElement approveWithdrawalButton;
+
+    @FindBy (id = "approveWithdrawalStatus")
+    public WebElement approveWithdrawalSaveButton;
+
+    @FindBy (xpath = "//*[@data-icon='eye']")
+    public List<WebElement> withdrawalSayfasiViewButonlariList;
+
+    @FindBy (id = "withdrawalIsApproved")
+    public WebElement withdrawalIsApproved;
+
+    @FindBy (xpath = "(//*[@class='btn-close'])[5]")
+    public WebElement withdrawalViewCloseButton;
+
+
+
 }

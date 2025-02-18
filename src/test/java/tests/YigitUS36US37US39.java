@@ -1,5 +1,6 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -434,6 +435,8 @@ public class YigitUS36US37US39 {
     // US37 - Test Case 04
     // Davet Bağlantısı ile kayıt sayfasına yönlendirme testi.
 
+
+
     @Test
     public void US37TC04DavetBaglantisiIleKayitSayfasinaYonlendirmeTesti() throws IOException, UnsupportedFlavorException {
 
@@ -571,6 +574,164 @@ public class YigitUS36US37US39 {
         adminPages.signOutButonu.click();
         Driver.quitDriver();
     }
+
+    // US37 - Test Case 07
+    // Davet ile kaydolan kullanıcının panelde görünmesi testi.
+
+    @Test
+    public void US37TC07KaydolanKullanicininPaneldeGorunmesiTesti(){
+
+        Faker faker = new Faker();
+
+        //Davet edilen kullanıcı kayıt olur.
+
+        Driver.getDriver().get(ConfigReader.getProperty("yigitDavetBaglantisi"));
+
+        userPages.newVcardSayfasiFirstNameKutusu.sendKeys(faker.name().firstName());
+        userPages.newVcardSayfasiLastNameKutusu.sendKeys(faker.name().lastName());
+        String email = faker.internet().emailAddress();
+        userPages.affiliationsSayfasiSendInviteBolumuEmailKutusu.sendKeys(email);
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.kayitSayfasiConfirmPassword.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.kayitSayfasiTermsAndConditions.click();
+        anasayfaPages.signInLoginButonu.click();
+
+        // giris yapar
+
+        anasayfaPages.signInEmailKutusu.sendKeys(email);
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        // abonelik satin alir ve odeme yapar
+
+        userPages.avatarDropdownMenuButonu.click();
+        userPages.userDropdownMenuManageSubscription.click();
+        userPages.userSubscriptionUpgradeButton.click();
+        userPages.manageSubscriptionUnlimitedSekmesi.click();
+        userPages.unlimitedPlanSwitchPlanButonu.click();
+        userPages.userSubscriptionSelectPaymentDdwButton.click();
+        userPages.userSubscriptionDropdownStripeButton.click();
+        userPages.paySwitchPlanButton.click();
+
+        userPages.subscriptionCardNumberInput.sendKeys(ConfigReader.getProperty("validCardNumber"));
+        userPages.cardExpirationDateInput.sendKeys(ConfigReader.getProperty("cardExpirationDate"));
+        userPages.cardCvcInput.sendKeys(ConfigReader.getProperty("cardCvc"));
+        userPages.cardHolderNameInput.sendKeys(faker.name().fullName());
+        userPages.userSubscriptionPayButton.click();
+
+        userPages.backToSubscriptionButton.click();
+
+        // çıkış yapar.-- Davet eden kullanıcı login sayfasına gider.
+
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+
+        userPages.solPanelAffiliationsButonu.click();
+
+        //Panelde davet edilen kullanıcının listelendiğini kontrol eder.
+        String xPath= "//*[.='"+email+"']";
+        WebElement referredUser = Driver.getDriver().findElement(By.xpath(xPath));
+
+        Assert.assertTrue(referredUser.isDisplayed());
+
+        //sign out olur ve sayfaları kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+    // US37 - Test Case 08
+    // Geçersiz E-posta adresi ile davet maili testi.
+
+    @Test
+    public void US37TC08AffilationCekimIslemiTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //Kullanıcı "Withdrawal" sekmesine tıklar.
+        userPages.affilationsWithdrawalTab.click();
+
+        //Kullanıcı "Withdraw Amount" butonuna tıklar.
+        userPages.affilationsWithdrawAmountButton.click();
+
+        //Çekmek istediği tutarı güncel bakiyeden düşük veya eşit olarak girer.
+        userPages.withdrawAmountKutusu.sendKeys("10");
+
+        //Sistemde kayıtlı olan Paypal e-posta adresini girer.
+        userPages.withdrawPaypalEmailKutusu.sendKeys(ConfigReader.getProperty("yigitPaypal"));
+
+        //"Save" butonuna tıklar.
+        ReusableMethods.bekle(1);
+        userPages.withdrawSaveButton.click();
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //Yönetici çekim talebini onaylar.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+
+
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        adminPages.affilationTransactionsSekmesi.click();
+
+        adminPages.approvalStatusList.get(0).click();
+        adminPages.approveWithdrawalButton.click();
+        ReusableMethods.bekle(1);
+        adminPages.approveWithdrawalSaveButton.click();
+
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+
+        //User Para çekme işleminin başarıyla tamamlandığını test eder.
+
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        userPages.solPanelAffiliationsButonu.click();
+        userPages.affilationsWithdrawalTab.click();
+
+        adminPages.withdrawalSayfasiViewButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        String actual = adminPages.withdrawalIsApproved.getText();
+        String expected = "Approved";
+
+        Assert.assertEquals(actual,expected);
+
+        adminPages.withdrawalViewCloseButton.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
 
 
 
