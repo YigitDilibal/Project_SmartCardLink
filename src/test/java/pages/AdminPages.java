@@ -225,6 +225,53 @@ public class AdminPages {
     @FindBy(xpath = "//a[@class='dropdown-item text-gray-900 d-flex']")
     public WebElement logoutButonu;
 
+    @FindBy(xpath = "(//*[.='Countries'])[1]")
+    public WebElement anasayfaCountriesButonu;
+
+    @FindBy(xpath = "//*[.='States']")
+    public WebElement countriesSayfasiStatesButonu;
+
+    @FindBy(xpath = "//*[.='Cities']")
+    public WebElement countriesSayfasiCitiesButonu;
+
+    @FindBy(xpath = "//*[@type='search']")
+    public WebElement countriesSayfasiSearchKutusu;
+
+    @FindBy(xpath = "//*[@data-icon='pen-to-square']")
+    public List<WebElement> countriesSayfasiEditButonlariList;
+
+    @FindBy(xpath = "//*[@class='btn btn-primary ms-auto']")
+    public WebElement countriesSayfasiYeniBolgeButonu;
+
+    @FindBy(id = "countryName")
+    public WebElement newCountryNameKutusu;
+
+    @FindBy(id = "short_code")
+    public WebElement newCountryShortCodeKutusu;
+
+    @FindBy(id = "phone_code")
+    public WebElement newCountryPhoneCodeKutusu;
+
+    @FindBy(id = "btnSave")
+    public WebElement newCountrySaveButonu;
+
+    @FindBy(id = "name")
+    public WebElement newStateNameKutusu;
+
+    @FindBy(xpath = "//select[@id='countryState']")
+    public WebElement newStateDdmMenu;
+
+    @FindBy(xpath = "//select[@id='StateCity']")
+    public WebElement newCityDdmMenu;
+
+
+
+
+
+
+
+
+
 
 
 }
