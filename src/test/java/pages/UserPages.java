@@ -239,4 +239,9 @@ public class UserPages {
     @FindBy(xpath = "(//button[.='Save'])[1]")
     public WebElement withdrawSaveButton;
 
+    @FindBy(xpath = "(//*[.='Cancel'])[1]")
+    public WebElement withdrawAmountPenceresiCancelButton;
+
+
+
 }

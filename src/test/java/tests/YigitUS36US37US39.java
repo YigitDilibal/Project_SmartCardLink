@@ -731,7 +731,125 @@ public class YigitUS36US37US39 {
         Driver.quitDriver();
     }
 
+    // US37 - Test Case 09
+    // Affiliation sayfasında çekim işlemi testi.(negatif)
 
+    @Test
+    public void US37TC09NegatifCekimTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //Kullanıcı "Withdrawal" butonuna tıklar.
+        userPages.affilationsWithdrawalTab.click();
+
+        //Kullanıcı "Withdraw Amount" butonuna tıklar.
+        userPages.affilationsWithdrawAmountButton.click();
+
+        //Çekmek istediği tutarı güncel bakiyeden daha yüksek girer.
+        userPages.withdrawAmountKutusu.sendKeys("1000");
+
+        //Sistemde kayıtlı olan Paypal e-posta adresini girer.
+        userPages.withdrawPaypalEmailKutusu.sendKeys(ConfigReader.getProperty("yigitPaypal"));
+
+        //"Save" butonuna tıklar ve çekim talebi oluşmadığını test eder.
+        ReusableMethods.bekle(1);
+        userPages.withdrawSaveButton.click();
+
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //"Amount" kutusundaki bakiyeyi güncel bakiyeden düşük veya eşit hale getirir.
+        userPages.withdrawAmountKutusu.clear();
+        userPages.withdrawAmountKutusu.sendKeys("10");
+
+        //Sistemde kayıtlı olmayan bir Paypal e-posta adresi girer.
+        userPages.withdrawPaypalEmailKutusu.clear();
+        userPages.withdrawPaypalEmailKutusu.sendKeys("yigitdilibal@outlook.com");
+
+        //"Save" butonuna tıklar ve çekim talebi oluşmadığını test eder.
+        ReusableMethods.bekle(1);
+        userPages.withdrawSaveButton.click();
+
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        // Withdraw Amount penceresini kapatir
+
+        ReusableMethods.bekle(1);
+        userPages.withdrawAmountPenceresiCancelButton.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US37 - Test Case 10
+    // Onaylanan ve reddedilen çekim taleplerini görüntüleme testi.
+
+    @Test
+    public void US37TC10GecmisCekimTalepleriniGoruntulemeTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'da "Affiliations" sekmesine tıklar.
+        userPages.solPanelAffiliationsButonu.click();
+
+        //Kullanıcı "Withdrawal" butonuna tıklar.
+        userPages.affilationsWithdrawalTab.click();
+
+        //Kullanıcı geçmişte gönderdiği çekim taleplerinin görüntülenebildiğini test eder.
+        Assert.assertFalse(adminPages.withdrawalSayfasiViewButonlariList.isEmpty());
+
+        //Çekim işleminin yanındaki "View" butonuna tıklar.
+        adminPages.withdrawalSayfasiViewButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //Kullanıcı çekim işlemindeki detayların doğru bir şekilde görüntülenebildiğini test eder.
+
+        String actual = adminPages.withdrawalIsApproved.getText();
+        String expected = "Approved";
+
+        Assert.assertEquals(actual,expected);
+
+        adminPages.withdrawalViewCloseButton.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+    // ================================================================================================
+
+
+    // ========== US 39 ==========
+    // Bir yönetici olarak giriş yaptıktan sonra
+    // sitede işlemlerde kullanılan ülke, eyalet, şehir sayılarını görüntüleyebildiğimi
+    // ve yeni ülke, eyalet, şehir ekleyebildiğimi doğrulayabilmeliyim
+
+
+    // US39 - Test Case 01
+    // Yönetim panelinde "Countries" sekmesine erişim ve sekmeler arası geçiş testi.
 
 
 
