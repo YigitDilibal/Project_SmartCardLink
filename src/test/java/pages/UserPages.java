@@ -239,9 +239,70 @@ public class UserPages {
     @FindBy(xpath = "(//button[.='Save'])[1]")
     public WebElement withdrawSaveButton;
 
+    ////////////////////////////////////////US15////////////////////////////////////////
+
+    @FindBy(xpath = "(//li[@class='nav-item '][4])")
+    public WebElement virtualBackgroundsSideBarButonu;
+
+    @FindBy(xpath = "//img[@src='https://qa.smartcardlink.com/assets/img/ecards/H-Vcard/H-1/Back.png']")
+    public WebElement virtualBackgroundsIlkKartTemplateResmi;
+
+    @FindBy(xpath = "//h1[.='Add Virtual Background']")
+    public WebElement virtualBackgroundsAddVirtualBackgroundYazisi;
+
+    @FindBy(xpath = "//span[@aria-controls='select2-e-vcard-id-container']")
+    public WebElement virtualBackgroundsVcardNameDropdownButonu;
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement virtualBackgroundsVcardNameSearchInputAlani;
+
+    @FindBy(id = "e-card-first-name")
+    public WebElement virtualBackgroundsFirstnameInputAlani;
+
+    @FindBy(id = "e-card-last-name")
+    public WebElement virtualBackgroundsLastnameInputAlani;
+
+    @FindBy(id = "e-card-email")
+    public WebElement virtualBackgroundsEmailInputAlani;
+
+    @FindBy(id = "e-card-occupation")
+    public WebElement virtualBackgroundsOccupationInputAlani;
+
+    @FindBy(id = "e-card-location")
+    public WebElement virtualBackgroundsLocationInputAlani;
+
+    @FindBy(id = "phoneNumber")
+    public WebElement virtualBackgroundsTelefonNumarasiInputAlani;
+
+    @FindBy(xpath = "//div[@class='iti__selected-flag']")
+    public WebElement virtualBackgroundsUlkeBayragiSeciliAlan;
+
+    @FindBy(id = "e-card-website")
+    public WebElement virtualBackgroundsWebsiteInputAlani;
+
+    @FindBy(xpath = "//a[.='Back']")
+    public WebElement virtualBackgroundsBackButonu;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement virtualBackgroundsSaveButonu;
+
+    @FindBy(xpath = "//a[@class='btn btn-secondary']")
+    public WebElement virtualBackgroundsDiscardButonu;
+
+    @FindBy(xpath = "//span[@class='picker-edit rounded-circle text-gray-500 fs-small']")
+    public WebElement virtualBackgroundsResimSecmeButonu;
+
+    @FindBy(xpath = "//*[.='The ecard-logo field is required.']")
+    public WebElement virtualBackgroundsResimYuklenmeyinceVerilenUyariMesaji;
+
+    @FindBy(xpath = "//input[@type='file']")
+    public WebElement virtualBackgroundsFileInput;
+
+    @FindBy(xpath = "//li[@class='select2-results__option select2-results__message']")
+    public WebElement virtualBackgroundsVcardNameNotFoundInputText;
+  
     @FindBy(xpath = "(//*[.='Cancel'])[1]")
     public WebElement withdrawAmountPenceresiCancelButton;
-
-
+ 
 
 }
