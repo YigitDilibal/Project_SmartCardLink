@@ -300,5 +300,9 @@ public class UserPages {
 
     @FindBy(xpath = "//li[@class='select2-results__option select2-results__message']")
     public WebElement virtualBackgroundsVcardNameNotFoundInputText;
+  
+    @FindBy(xpath = "(//*[.='Cancel'])[1]")
+    public WebElement withdrawAmountPenceresiCancelButton;
+ 
 
 }
