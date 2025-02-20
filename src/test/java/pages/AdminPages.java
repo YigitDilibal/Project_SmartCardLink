@@ -81,6 +81,8 @@ public class AdminPages {
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][2])")
     public WebElement adminPlansTabloPriceSiralamaButonu;
 
+
+
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][3])")
     public WebElement adminPlansTabloStatusSiralamaButonu;
 
@@ -308,6 +310,34 @@ public class AdminPages {
 
     @FindBy(xpath = "(//button[.='Discard'])[1]")
     public WebElement newCountryDiscardButton;
+
+    @FindBy (xpath = "//input[@ * = 'form-control ps-8'] ")
+    public WebElement aboneKullaniciAramaKutusu;
+
+    @FindBy (xpath = "//span[ . = 'Kullanıcı adı']")
+    public WebElement aboneKullaniciAdi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Plan Adı' )] ")
+    public WebElement aboneKullaniciPlanAdi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Başlangıç tarihi' )] ")
+    public WebElement aboneKullaniciBaslangicTarihi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Bitiş tarihi' )] [1]")
+    public WebElement aboneKullanicilarBitisTarihi;
+
+    @FindBy (xpath = "//span[ . = 'Bağlı Olduğu'] ")
+    public WebElement bagliOlduguKullaniciAdi;
+
+    @FindBy (xpath = "//span[ . = 'kullanıcı'] ")
+    public WebElement bagliKullaniciAdi;
+
+    @FindBy (xpath = "//span[ . = 'Üyelik tutarı'] ")
+    public WebElement bagliKullaniciUyelikTutari;
+
+    @FindBy (xpath = "//span[ . = 'Tarih']")
+    public WebElement bagliKullaniciUyelikTarihi;
+
 
 
 
