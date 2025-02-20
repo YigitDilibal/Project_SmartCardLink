@@ -14,10 +14,11 @@ import pages.UserPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.time.Duration;
 
-public class SumeyraUS19US21US22 {
+public class SumeyraUS19US21US22 extends TestBaseRapor {
 
     AnasayfaPages anasayfaPages;
     AdminPages adminPages;
@@ -124,20 +125,30 @@ public class SumeyraUS19US21US22 {
         Driver.quitDriver();
     }
     @Test
-    public void notAnAdminUserSıgnınTest (){
+    public void notAnAdminUserSıgnınTest (){  // NEGATİVE TEST
+        extentTest = extentReports.createTest("notAnAdminUserSıgnınTest",
+                "Admin olmayan bir Kullanıcının yanlızca kendi sayfasına erişebilmesi");
         //Yönetici URL ile siteye erişim sağlar
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+        extentTest.info("Kullanici SmartcardLink anasayfasina gider");
         //Yönetici Sıgn ın sayfasına erişim sağlar.
         anasayfaPages.homepageSıgnInButonu.click();
+        extentTest.info("Signin linkine basar");
         //Sıgn ın sayfasında Email kutusuna geçersiz mail girer.
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("usersumeyramail"));
+        extentTest.info("Kullanici email'i olarak gecerli email girer");
         //Sıgn ın sayfasında password kutusununa gecersiz password girer.
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        //Login tusuna basar ve yönetici sayfasına ulaşamaz.
+        extentTest.info("Kullanici sifresi olarak gecerli password girer");
+        //Login tusuna basar ve yönetici sayfasında olmayan enguires butonunu görüntülediğini doğrular.
         anasayfaPages.signInLoginButonu.click();
         Assert.assertTrue(userPages.dahbordPanelEnguiriesButonu.isDisplayed());
-        //Sayfayı kapatır.
-        Driver.quitDriver();
+        extentTest.pass("Login tusuna basar ve yönetici sayfasında olmayan enguires butonunu görüntülediğini doğrular.");
+        //Sıgnout olur ve Sayfayı kapatır.
+        userPages.avatarDropdownMenuButonu.click();
+        userPages.signOutButonu.click();
+        extentTest.info("Sıgnout olur ve Sayfayı kapatır");
+
     }
     @Test
     public void loginPageLoadTest (){
@@ -238,34 +249,46 @@ public class SumeyraUS19US21US22 {
     }
     // US-19 TC-02 Negative Password Change Test (shorter than 8 characters)
     @Test
-    public void negativePasswordChangeTestShorterThan8Characters (){
+    public void negativePasswordChangeTestShorterThan8Characters (){ // NEGATIVE TEST
+        extentTest = extentReports.createTest("Negative Password Change Test (shorter than 8 characters)",
+                "Kullanıcı yeni şifre olarak 8 karakterden kısa bir şifre ile yeni şifre oluşturamamalı. ");
         //Kullanıcı URL ile siteye erişir
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+        extentTest.info("Kullanici SmartcardLink anasayfasina gider");
         //Kullanıcı Sıgn ın linkine tıklar ve sign ın sayfasına erişim sağlar
         anasayfaPages.homepageSıgnInButonu.click();
+        extentTest.info("Kullanıcı Sıgn ın linkine tıklar ve sign ın sayfasına erişim sağlar");
         //Kullanıcı geçerli bilgiler ile login olur.
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("usersumeyramail"));
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         anasayfaPages.signInLoginButonu.click();
+        extentTest.info("Kullanıcı geçerli bilgiler ile login olur.");
         //Kullanıcı kendi sayfasına erişim sağlar ve avatar/isim alanındaki dahbord a tıklar.
         userPages.avatarDropdownMenuButonu.click();
+        extentTest.info("Kullanıcı kendi sayfasına erişim sağlar ve avatar/isim alanındaki dahbord a tıklar.");
         //Dashbord daki "Şifre Değişim" butonuna tıklar.
         userPages.changePasswordButonu.click();
+        extentTest.info("Dashbord daki Şifre Değişim butonuna tıklar.");
         //Şifre değişim formunda Current Password textbox a geçerli şifreyi girer.
         userPages.parolaDegistirmeFormuCurrentPasswordTextBox.sendKeys(ConfigReader.getProperty("password"));
+        extentTest.info("Şifre değişim formunda Current Password textbox a geçerli şifreyi girer.");
         ReusableMethods.bekle(1);
         //Şifre değişim formunda New Password textbox a gecersiz New Password girer.
         userPages.parolaDegistirmeFormuNewPasswordTextBox.sendKeys("Sma.12");
+        extentTest.info("Şifre değişim formunda New Password textbox a gecersiz New Password girer.");
         //Şifre değişim formunda Confirm Password gecersiz Confirm Password girer.
         userPages.parolaDegistirmeFormuConfirmPasswordTextBox.sendKeys("Sma.12");
-        //Save butonuna tıkladığında ilgili uyarı mesajın geldiğini doğrular
+        extentTest.info("Şifre değişim formunda Confirm Password gecersiz Confirm Password girer.");
+        //Save butonuna tıklar.
         userPages.parolaDegiştirmeFormuSaveButonu.click();
-        //Başarılı bir şekilde şifre değişim işlemini yapamadığını doğrular.
+        extentTest.info("Save butonuna tıklar");
+        //Başarılı bir şekilde ilgili uyarı mesajının geldiğini doğrular.
         WebDriverWait wait = new WebDriverWait(Driver.driver , Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(userPages.parolaDeğişimMesajı));
         String expectedParolaDegişimMesajı = "The new password must be at least 8 characters.";
         String actualParolaDegişimMesajı = userPages.parolaDeğişimMesajı.getText();
         Assert.assertTrue(actualParolaDegişimMesajı.contains(expectedParolaDegişimMesajı));
+        extentTest.pass("Başarılı bir şekilde ilgili uyarı mesajının geldiğini doğrular ve şifre değişimi yapamaz.");
         userPages.parolaDeğişimFormuKapatmaXbutonu.click();
         ReusableMethods.bekle(6);
         // wait.until(ExpectedConditions.elementToBeClickable(userPages.avatarDropdownMenuButonu));
@@ -274,8 +297,7 @@ public class SumeyraUS19US21US22 {
         //Sıgn out olur
         userPages.avatarDropdownMenuButonu.click();
         userPages.signOutButonu.click();
-        //ve sayfayı kapatır.
-        Driver.quitDriver();
+        extentTest.info("Sıgn out olur ve sayfayı kapatır.");
 
     }
     // US-19 TC-09 Nice to Have - Negative Password Change Test (case sensitivity)
@@ -462,7 +484,7 @@ public class SumeyraUS19US21US22 {
             userPages.biEyeFillHide.get(i).click();
         }
         for (int i = 0; i <userPages.biEyeFillShow.size() ; i++) {
-           Assert.assertTrue(userPages.biEyeFillShow.get(i).isDisplayed());
+            Assert.assertTrue(userPages.biEyeFillShow.get(i).isDisplayed());
         }
         //Parola değişim formunu kapatır.
         userPages.parolaDeğişimFormuKapatmaXbutonu.click();
