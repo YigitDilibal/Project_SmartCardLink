@@ -40,7 +40,7 @@ public class SumeyraUS19US21US22 {
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
         //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        //Login tusuna basar ve kendi sayfasına erişim saglar.git
+        //Login tusuna basar ve kendi sayfasına erişim saglar.
         anasayfaPages.signInLoginButonu.click();
         //Sıgn out olur ve sayfayı kapatır.
         adminPages.avatarDropdownMenuButonu.click();
