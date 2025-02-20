@@ -31,7 +31,7 @@ public class SedaUS28US30US35 {
             anasayfaPages.homepageSıgnInButonu.click();
 
 
-            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminSedaMail"));
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsedamail"));
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
             anasayfaPages.signInLoginButonu.click();
 
@@ -39,6 +39,13 @@ public class SedaUS28US30US35 {
             // Yukarıdaki adımlarla admin girişi yapılmış oldu ve dashboard sayfasına erişim sağlandı
 
             adminPages.adminSekmesiSubscribedUserButonu.click(); // Abone kullanıcılar sekmesine erişildi
+            adminPages.aboneKullaniciAdi.click();
+            adminPages.aboneKullaniciPlanAdi.click();
+            adminPages.aboneKullaniciBaslangicTarihi.click();
+            adminPages.aboneKullanicilarBitisTarihi.click(); // Tüm butonlara tıklanarak kontrol edildi
+
+            adminPages.avatarDropdownMenuButonu.click();
+            adminPages.signOutButonu.click(); // çıkış yapıldı
 
         }
 
@@ -49,7 +56,7 @@ public class SedaUS28US30US35 {
             anasayfaPages.homepageSıgnInButonu.click();
 
 
-            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminSedaMail"));
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsedamail"));
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
             anasayfaPages.signInLoginButonu.click();
 
@@ -57,6 +64,17 @@ public class SedaUS28US30US35 {
             // Yukarıdaki adımlarla admin girişi yapılmış oldu ve dashboard sayfasına erişim sağland
 
             adminPages.adminSekmesiBagliKullanicilarButonu.click(); // Bağlı kullanıcılar sekmesine erişildi
+            adminPages.bagliOlduguKullaniciAdi.click();
+            adminPages.bagliKullaniciAdi.click();
+            adminPages.bagliKullaniciUyelikTutari.click();
+            adminPages.bagliKullaniciUyelikTarihi.click(); // Butonlar kontrol edildi
+
+            adminPages.avatarDropdownMenuButonu.click();
+            adminPages.signOutButonu.click(); // çıkış yapıldı
+
+
+
+
 
         }
 
@@ -67,7 +85,7 @@ public class SedaUS28US30US35 {
             anasayfaPages.homepageSıgnInButonu.click();
 
 
-            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminSedaMail"));
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsedamail"));
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
             anasayfaPages.signInLoginButonu.click();
 
