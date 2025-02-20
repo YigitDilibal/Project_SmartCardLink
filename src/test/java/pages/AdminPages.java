@@ -276,6 +276,43 @@ public class AdminPages {
     @FindBy (xpath = "//*[@id='dashboardChangeIncomeChart']")
     public WebElement chartToggleButton;
 
+    @FindBy(id = "editName")
+    public WebElement editCountryNameKutusu;
+
+    @FindBy(id = "editShortCode")
+    public WebElement editCountryShortCodeKutusu;
+
+    @FindBy(id = "editPhoneCode")
+    public WebElement editCountryPhoneCodeKutusu;
+
+    @FindBy(xpath = "//select[@id='editCountryId']")
+    public WebElement editStateDdmMenu;
+
+    @FindBy(xpath = "//select[@id='editStateId']")
+    public WebElement editCityDdmMenu;
+
+    @FindBy(xpath = "(//button[.='Save'])[2]")
+    public WebElement editCountryCitySaveButonu;
+
+    @FindBy(xpath = "//*[@data-icon='trash']")
+    public List<WebElement> countriesSayfasiDeleteButonlariList;
+
+    @FindBy(xpath = "//*[.='Yes, Delete!']")
+    public WebElement countriesSayfasiYesDeleteButonu;
+
+    @FindBy(xpath = "//button[.='2']")
+    public WebElement ikinciSayfayaGecmeButonu;
+
+    @FindBy(xpath = "//*[@id='perPage']")
+    public WebElement sayfadakiOgeSayisiBelirlemeDdm;
+
+    @FindBy(xpath = "(//button[.='Discard'])[1]")
+    public WebElement newCountryDiscardButton;
+
+
+
+
+
 
 
 

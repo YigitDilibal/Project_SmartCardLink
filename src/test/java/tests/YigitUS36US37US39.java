@@ -965,12 +965,16 @@ public class YigitUS36US37US39 {
 
         //"New Country" butonuna tıklar.
         adminPages.countriesSayfasiYeniBolgeButonu.click();
+
         //"Name" kutusunu doldurur.
         adminPages.newCountryNameKutusu.sendKeys("TestUlke");
+
         //"Short Code" kutusunu doldurur.
         adminPages.newCountryShortCodeKutusu.sendKeys("TU");
+
         //"Phone Code" kutusunu doldurur.
         adminPages.newCountryPhoneCodeKutusu.sendKeys("0008");
+
         //Save butonuna tıklar ve ulkenin kaydedildigini test eder.
         adminPages.newCountrySaveButonu.click();
 
@@ -1023,6 +1027,423 @@ public class YigitUS36US37US39 {
         Driver.quitDriver();
     }
 
+
+    // US39 - Test Case 04
+    // Countries sayfasında listeden bir öğenin düzenlenip kaydedilmesi testi.
+
+    @Test
+    public void US39TC04CountriesSayfasindaDuzenlemeTesti(){
+
+        //Admin login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Super admin giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'daki "Countries" sekmesine tıklar.
+        adminPages.anasayfaCountriesButonu.click();
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestUlke");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan ülkenin yanındaki düzenleme butonuna tıklar.
+        adminPages.countriesSayfasiEditButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //"Name" kutusunu düzenler.
+        adminPages.editCountryNameKutusu.clear();
+        adminPages.editCountryNameKutusu.sendKeys("TestUlke2");
+
+        //"Short Code" kutusunu düzenler.
+        adminPages.editCountryShortCodeKutusu.clear();
+        adminPages.editCountryShortCodeKutusu.sendKeys("PP");
+
+        //"Phone Code" kutusunu düzenler.
+        adminPages.editCountryPhoneCodeKutusu.clear();
+        adminPages.editCountryPhoneCodeKutusu.sendKeys("0007");
+
+        //Save butonuna tıklar ve değişikliklerin kaydedildigini test eder.
+        adminPages.editCountryCitySaveButonu.click();
+
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //"States" sekmesine tıklar.
+        adminPages.countriesSayfasiStatesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestEyalet");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan eyaletin yanındaki düzenleme butonuna tıklar.
+        adminPages.countriesSayfasiEditButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //"Name" kutusunu düzenler.
+        adminPages.editCountryNameKutusu.clear();
+        adminPages.editCountryNameKutusu.sendKeys("TestEyalet2");
+
+        //"Country Name" kutusunda seçim yapar.
+        Select selectUlke = new Select(adminPages.editStateDdmMenu);
+        selectUlke.selectByVisibleText("Yiğitistan");
+
+        //Save butonuna tıklar ve değişikliklerin kaydedildigini test eder.
+        adminPages.editCountryCitySaveButonu.click();
+
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //"Cities" sekmesine tıklar.
+        adminPages.countriesSayfasiCitiesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestSehir");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan şehrin yanındaki düzenleme butonuna tıklar.
+        adminPages.countriesSayfasiEditButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //"Name" kutusunu düzenler.
+        adminPages.editCountryNameKutusu.clear();
+        adminPages.editCountryNameKutusu.sendKeys("TestSehir2");
+
+        //"State Name" kutusunda seçim yapar.
+        Select selectState = new Select(adminPages.editCityDdmMenu);
+        selectState.selectByVisibleText("Yiğitiye");
+
+        //Save butonuna tıklar ve değişikliklerin kaydedildigini test eder.
+        adminPages.editCountryCitySaveButonu.click();
+
+        Assert.assertTrue(userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.isDisplayed());
+        userPages.affiliationsSayfasiDavetKopyalandiOnayMesajiKapatmaButonu.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US39 - Test Case 05
+    // Countries sayfasında listeden öğe silme testi.
+
+    @Test
+    public void US39TC05CountriesSayfasindaSilmeTesti(){
+
+        //Admin login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Super admin giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'daki "Countries" sekmesine tıklar.
+        adminPages.anasayfaCountriesButonu.click();
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestUlke2");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan ülkenin yanındaki silme butonuna tıklar.
+        adminPages.countriesSayfasiDeleteButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //Yes Delete butonuna tıklar ve silindiğini test eder.
+        adminPages.countriesSayfasiYesDeleteButonu.click();
+
+        Assert.assertTrue(adminPages.adminPlansDeletePopupOkButonu.isDisplayed());
+        adminPages.adminPlansDeletePopupOkButonu.click();
+
+        //"States" sekmesine tıklar.
+        adminPages.countriesSayfasiStatesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestEyalet2");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan eyaletin yanındaki silme butonuna tıklar.
+        adminPages.countriesSayfasiDeleteButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //Yes Delete butonuna tıklar ve silindiğini test eder.
+        adminPages.countriesSayfasiYesDeleteButonu.click();
+
+        Assert.assertTrue(adminPages.adminPlansDeletePopupOkButonu.isDisplayed());
+        adminPages.adminPlansDeletePopupOkButonu.click();
+
+        //"Cities" sekmesine tıklar.
+        adminPages.countriesSayfasiCitiesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //listede arama yapar
+        adminPages.countriesSayfasiSearchKutusu.sendKeys("TestSehir2");
+        ReusableMethods.bekle(1);
+
+        //Arama sonucunda çıkan şehrin yanındaki silme butonuna tıklar.
+        adminPages.countriesSayfasiDeleteButonlariList.get(0).click();
+        ReusableMethods.bekle(1);
+
+        //Yes Delete butonuna tıklar ve silindiğini test eder.
+        adminPages.countriesSayfasiYesDeleteButonu.click();
+
+        Assert.assertTrue(adminPages.adminPlansDeletePopupOkButonu.isDisplayed());
+        adminPages.adminPlansDeletePopupOkButonu.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+    // US39 - Test Case 06
+    // Countries sayfasında liste görüntüleme ve sayfalandırma testi.
+
+    @Test
+    public void US39TC05CountriesSayfasiListeGoruntulemeTesti(){
+
+        //Admin login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Super admin giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'daki "Countries" sekmesine tıklar.
+        adminPages.anasayfaCountriesButonu.click();
+
+        //Listede 10 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),10);
+
+        //2. sayfaya geçmek için "2" butonuna tıklar.
+
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.driver;
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",adminPages.ikinciSayfayaGecmeButonu);
+        ReusableMethods.bekle(1);
+
+        adminPages.ikinciSayfayaGecmeButonu.click();
+
+        //"Show" dropdown menüsünde "25" seçeneğini seçer.
+        Select selectOge = new Select(adminPages.sayfadakiOgeSayisiBelirlemeDdm);
+        selectOge.selectByVisibleText("25");
+        ReusableMethods.bekle(1);
+
+        //Listede 25 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),25);
+
+        //"States" sekmesine tıklar.
+        adminPages.countriesSayfasiStatesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //Listede 10 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),10);
+
+        //2. sayfaya geçmek için "2" butonuna tıklar.
+
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",adminPages.ikinciSayfayaGecmeButonu);
+        ReusableMethods.bekle(1);
+
+        adminPages.ikinciSayfayaGecmeButonu.click();
+
+        //"Show" dropdown menüsünde "50" seçeneğini seçer.
+        Select selectOge2 = new Select(adminPages.sayfadakiOgeSayisiBelirlemeDdm);
+        selectOge2.selectByVisibleText("50");
+        ReusableMethods.bekle(1);
+
+        //Listede 50 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),50);
+
+        //"Cities" sekmesine tıklar.
+        adminPages.countriesSayfasiCitiesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //Listede 10 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),10);
+
+        //2. sayfaya geçmek için "2" butonuna tıklar.
+
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",adminPages.ikinciSayfayaGecmeButonu);
+        ReusableMethods.bekle(1);
+
+        adminPages.ikinciSayfayaGecmeButonu.click();
+
+        //"Show" dropdown menüsünde "50" seçeneğini seçer.
+        Select selectOge3 = new Select(adminPages.sayfadakiOgeSayisiBelirlemeDdm);
+        selectOge3.selectByVisibleText("50");
+        ReusableMethods.bekle(1);
+
+        //Listede 50 öğe görüntülendiğini test eder.
+        Assert.assertEquals(adminPages.countriesSayfasiEditButonlariList.size(),50);
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US39 - Test Case 07
+    // Countries sayfası yetkisiz kullanıcının sayfaya erişimi testi (negatif)
+
+    @Test
+    public void US39TC07CountriesSayfasiYetkisizErisimTesti(){
+
+        //Kullanici login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Kullanıcı giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Kullanıcı Countries sayfasının URL'ine gitmeyi dener.
+        Driver.getDriver().get("https://qa.smartcardlink.com/sadmin/countries");
+        ReusableMethods.bekle(1);
+
+        // User does not have the right roles. hatasinin alindigini test eder.
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Forbidden";
+
+        Assert.assertEquals(actualTitle,expectedTitle);
+
+        //Tarayıcıda geri tuşuna tıklar.
+        Driver.getDriver().navigate().back();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+    // US39 - Test Case 08
+    // Countries sayfası geçersiz bilgilerle öğe oluşturma testi. (negatif)
+
+    @Test
+    public void US39TC08CountriesSayfasindaGecersizBilgilerleOgeOlusturmaTesti(){
+
+        //Admin login sayfasına gider.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+        anasayfaPages.homepageSıgnInButonu.click();
+
+        //Super admin giriş bilgilerini girer ve logine basar.
+        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminYigitMail"));
+        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        anasayfaPages.signInLoginButonu.click();
+
+        //Dashboard'daki "Countries" sekmesine tıklar.
+        adminPages.anasayfaCountriesButonu.click();
+
+        //"New Country" butonuna tıklar.
+        adminPages.countriesSayfasiYeniBolgeButonu.click();
+
+        //"Name" kutusunu boş bırakır.
+        adminPages.newCountryNameKutusu.sendKeys("");
+
+        //"Short Code" kutusuna sayı girmeyi dener.
+        adminPages.newCountryShortCodeKutusu.sendKeys("55");
+
+        //"Phone Code" kutusuna harf girmeyi dener.
+        adminPages.newCountryPhoneCodeKutusu.sendKeys("ABC");
+
+        //Save butonuna tıklar ve ulkenin oluşturulmadığını test eder.
+        adminPages.newCountrySaveButonu.click();
+        ReusableMethods.bekle(1);
+
+        Assert.assertTrue(adminPages.newCountrySaveButonu.isDisplayed());
+
+        //"Discard" butonuna tıklar.
+        adminPages.newCountryDiscardButton.click();
+
+        //"States" sekmesine tıklar.
+        adminPages.countriesSayfasiStatesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //"New State" butonuna tıklar.
+        adminPages.countriesSayfasiYeniBolgeButonu.click();
+
+        //"Name" kutusunu boş bırakır.
+        adminPages.newStateNameKutusu.sendKeys("");
+
+        //"Country Name" kutusunda seçim yapar.
+        Select selectUlke = new Select(adminPages.newStateDdmMenu);
+        selectUlke.selectByVisibleText("Afghanistan");
+
+        //Save butonuna tıklar ve eyaletin kaydedilmedigini test eder.
+        adminPages.newCountrySaveButonu.click();
+        ReusableMethods.bekle(1);
+
+        Assert.assertTrue(adminPages.newCountrySaveButonu.isDisplayed());
+
+        //"Name" kutusunu doldurur.
+        adminPages.newStateNameKutusu.sendKeys("TestEyalet1515");
+
+        //"Country Name" kutusunda Select Country secer.
+        selectUlke.selectByVisibleText("Select Country");
+
+        //Save butonuna tıklar ve eyaletin kaydedilmedigini test eder.
+        adminPages.newCountrySaveButonu.click();
+        ReusableMethods.bekle(1);
+
+        Assert.assertTrue(adminPages.newCountrySaveButonu.isDisplayed());
+
+        //"Discard" butonuna tıklar.
+        adminPages.newCountryDiscardButton.click();
+
+        //"Cities" sekmesine tıklar.
+        adminPages.countriesSayfasiCitiesButonu.click();
+        ReusableMethods.bekle(1);
+
+        //"New City" butonuna tıklar.
+        adminPages.countriesSayfasiYeniBolgeButonu.click();
+
+        //"Name" kutusunu bos birakir.
+        adminPages.newStateNameKutusu.sendKeys("");
+
+        //"State Name" kutusunda seçim yapar.
+        Select selectState = new Select(adminPages.newCityDdmMenu);
+        selectState.selectByVisibleText("A Coruna");
+
+        //Save butonuna tıklar ve sehrin kaydedilmedigini test eder.
+        adminPages.newCountrySaveButonu.click();
+        ReusableMethods.bekle(1);
+
+        Assert.assertTrue(adminPages.newCountrySaveButonu.isDisplayed());
+
+        //"Name" kutusunu doldurur.
+        adminPages.newStateNameKutusu.sendKeys("TestSehir1515");
+
+        //"State Name" kutusunda Select State secer.
+        selectState.selectByVisibleText("Select State");
+
+        //Save butonuna tıklar ve sehrin kaydedilmedigini test eder.
+        adminPages.newCountrySaveButonu.click();
+        ReusableMethods.bekle(1);
+
+        Assert.assertTrue(adminPages.newCountrySaveButonu.isDisplayed());
+
+        //"Discard" butonuna tıklar.
+        adminPages.newCountryDiscardButton.click();
+
+        //sign out olur ve sayfayı kapatır.
+        adminPages.avatarDropdownMenuButonu.click();
+        adminPages.signOutButonu.click();
+        Driver.quitDriver();
+    }
+
+
+
+    // US36, US37, US39 ALL DONE. :D
 
 
 
