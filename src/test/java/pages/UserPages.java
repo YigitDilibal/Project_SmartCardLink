@@ -196,7 +196,7 @@ public class UserPages {
     @FindBy (xpath = "//*[@data-id='4']")
     public WebElement userSubscriptionUnlimitedButton;
 
-    @FindBy (xpath = "(//*[@class='mb-2'])[4]")
+    @FindBy (xpath = "(//*[@class='mb-2'])[4]")//
     public WebElement subscriptionUnlimitedPlanPrice;
 
     @FindBy (xpath = "//*[@class='CurrencyAmount']")

@@ -15,6 +15,8 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.lang.reflect.Method;
+
 import static utilities.Driver.driver;
 
 public class BurakUs18Us24Us25 {
@@ -31,19 +33,33 @@ public class BurakUs18Us24Us25 {
 
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp(Method method){
+
+        String testName = method.getName();
+
+        if (testName.toLowerCase().contains("user")) {
 
 
-        //Kullanıcı anasayfaya gider ve
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-       // ReusableMethods.bekle(2);
-        anasayfaPages.homepageSıgnInButonu.click();
-      //  ReusableMethods.bekle(2);
+            //Kullanıcı anasayfaya gider ve
+            Driver.getDriver().get(ConfigReader.getProperty("url"));
+            anasayfaPages.homepageSıgnInButonu.click();
 
-        //Kullanıcı giriş bilgilerini girer ve login olur
-        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userburakumail"));
-        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        anasayfaPages.signInLoginButonu.click();
+            //Kullanıcı giriş bilgilerini girer ve login olur
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userburakumail"));
+            anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+            anasayfaPages.signInLoginButonu.click();
+
+        } else {
+            //Yönetici anasayfaya gider
+            Driver.getDriver().get(ConfigReader.getProperty("url"));
+            anasayfaPages.homepageSıgnInButonu.click();
+            //Yönetici giriş bilgilerini girer ve login olur
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminburakumail"));
+            anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+            anasayfaPages.signInLoginButonu.click();
+
+
+        }
 
     }
 
@@ -53,6 +69,7 @@ public class BurakUs18Us24Us25 {
         //Kullanıcı çıkış yapar
         userPages.userAvatarDropdownMenuButonu.click();
         userPages.signOutButonu.click();
+        Driver.quitDriver();
 
     }
 
@@ -60,7 +77,7 @@ public class BurakUs18Us24Us25 {
 
 
 @Test (priority =1)
-public void US18_ValidCreditCardLoginTest() {
+public void US18_UserValidCreditCardLoginTest() {
 
 
     //Kullanıcı abonelik bölumune gider
@@ -92,7 +109,7 @@ public void US18_ValidCreditCardLoginTest() {
 }
 
 @Test(priority =2)
-    public void US18_InvalidCreditCardLoginTest(){
+    public void US18_UserInvalidCreditCardLoginTest(){
 
     //Kullanıcı abonelik bölumune gider
     userPages.userAvatarDropdownMenuButonu.click();
@@ -130,7 +147,7 @@ public void US18_ValidCreditCardLoginTest() {
 }
 
 @Test(priority = 3)
-    public void verifySubscriptionPriceConsistencyTest(){
+    public void UserVerifySubscriptionPriceConsistencyTest(){
 
     //Kullanıcı abonelik bölumune gider
     userPages.userAvatarDropdownMenuButonu.click();
@@ -143,6 +160,8 @@ public void US18_ValidCreditCardLoginTest() {
     //Kullanıcı gold aboneligini seçer
     js.executeScript("arguments[0].click();", userPages.userSubscriptionUnlimitedButton);
     ReusableMethods.bekle(2);
+    String expectedPrice =userPages.subscriptionUnlimitedPlanPrice.getText().trim();
+
     actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
     //Kullanıcı sayfadaki dropdown menuyu açar ve stripe butonuna tıklar
     userPages.userSubscriptionSelectPaymentDdwButton.click();
@@ -150,21 +169,66 @@ public void US18_ValidCreditCardLoginTest() {
     //Kullanıcı pay switch plan butonuna tıklar
     userPages.paySwitchPlanButton.click();
     //Abonelik ekranındaki fiyat ile satın alma adımındaki fiyatların eşitligi kontrol edilir
-    String expectedPrice =userPages.subscriptionUnlimitedPlanPrice.getText();
+    ReusableMethods.bekle(2);
+
+
+   // System.out.println(expectedPrice);
     String actualPrice = userPages.purchaseUnlimitedPlanPrice.getText();
+    System.out.println(actualPrice);
     Assert.assertEquals(actualPrice, expectedPrice,"Fiyatlar Eşleşmiyor!");
     //Kullanıcı önceki ekrana geri döner
+    ReusableMethods.bekle(1);
     userPages.subscriptionPurchaseBackButton.click();
     userPages.paymentFailureBackButton.click();
 
 }
 @Test(priority = 4)
-    public void test(){
+    public void testChartToggleLineToBar(){
+
+    adminPages.chartToggleButton.click();
+    adminPages.chartToggleButton.click();
+    adminPages.chartToggleButton.click();
+
+
+
+
+
+    String initialClass =adminPages.dashboardBarChart.getDomAttribute("data-icon");
+    System.out.println(initialClass);
+    Assert.assertTrue(initialClass.contains("line"));
+
+    ReusableMethods.bekle(5);
+
+    adminPages.chartToggleButton.click();
+
+
+
+
+    String updatedClass=adminPages.dashboardLineChart.getDomAttribute("data-icon");
+    System.out.println(updatedClass);
+    Assert.assertTrue(updatedClass.contains("bar"));
+
+    Assert.assertNotEquals(initialClass,updatedClass);
+
+
 
 
 
 
 }
+@Test
+    public void pie(){
+
+
+    actions.moveToElement(adminPages.dashboardpie);
+
+    String tooltipText = (String) js.executeScript("return document.querySelector('.tooltip').textContent;");
+    System.out.println("Tooltip İçeriği: " + tooltipText);
+
+
+}
+
+
 
 
 
