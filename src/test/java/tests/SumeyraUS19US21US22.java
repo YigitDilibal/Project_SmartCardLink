@@ -33,6 +33,7 @@ public class SumeyraUS19US21US22 {
     @Test
     public void gecerliLoginTesti () {
         //Yönetici URL ile siteye erişir
+
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
         anasayfaPages.homepageSıgnInButonu.click();
