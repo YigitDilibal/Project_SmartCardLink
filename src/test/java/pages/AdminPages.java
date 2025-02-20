@@ -264,6 +264,22 @@ public class AdminPages {
     @FindBy(xpath = "//select[@id='StateCity']")
     public WebElement newCityDdmMenu;
 
+    @FindBy (xpath = "//*[@data-icon='chart-bar']")
+    public WebElement dashboardLineChart;
+
+    @FindBy (xpath = "//*[@data-icon='chart-line']")
+    public WebElement dashboardBarChart;
+
+    @FindBy (xpath = "//*[@id='dashboardPlanPieChart']")
+    public WebElement dashboardpie;
+
+    @FindBy (xpath = "//*[@id='dashboardChangeIncomeChart']")
+    public WebElement chartToggleButton;
+
+
+
+
+
 
 
 

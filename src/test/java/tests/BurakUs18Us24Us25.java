@@ -190,9 +190,6 @@ public void US18_UserValidCreditCardLoginTest() {
     adminPages.chartToggleButton.click();
 
 
-
-
-
     String initialClass =adminPages.dashboardBarChart.getDomAttribute("data-icon");
     System.out.println(initialClass);
     Assert.assertTrue(initialClass.contains("line"));
@@ -201,9 +198,6 @@ public void US18_UserValidCreditCardLoginTest() {
 
     adminPages.chartToggleButton.click();
 
-
-
-
     String updatedClass=adminPages.dashboardLineChart.getDomAttribute("data-icon");
     System.out.println(updatedClass);
     Assert.assertTrue(updatedClass.contains("bar"));
@@ -211,21 +205,6 @@ public void US18_UserValidCreditCardLoginTest() {
     Assert.assertNotEquals(initialClass,updatedClass);
 
 
-
-
-
-
-}
-@Test
-    public void pie(){
-
-
-    actions.moveToElement(adminPages.dashboardpie);
-
-    String tooltipText = (String) js.executeScript("return document.querySelector('.tooltip').textContent;");
-    System.out.println("Tooltip İçeriği: " + tooltipText);
-
-
 }
 
 
@@ -234,6 +213,13 @@ public void US18_UserValidCreditCardLoginTest() {
 
 
 }
+
+
+
+
+
+
+
 
 
 
