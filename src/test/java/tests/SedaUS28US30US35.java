@@ -9,6 +9,7 @@ import pages.AnasayfaPages;
 import pages.UserPages;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class SedaUS28US30US35 {
 
@@ -83,18 +84,25 @@ public class SedaUS28US30US35 {
 
             Driver.getDriver().get(ConfigReader.getProperty("url"));
             anasayfaPages.homepageSıgnInButonu.click();
+            ReusableMethods.bekle(1);
 
 
             anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsedamail"));
+            ReusableMethods.bekle(1);
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+            ReusableMethods.bekle(1);
             anasayfaPages.signInLoginButonu.click();
+            ReusableMethods.bekle(1);
 
 
             // Yukarıdaki adımlarla admin girişi yapılmış oldu ve dashboard sayfasına erişim sağland
 
-            userPages.avatarDropdownMenuButonu.click();
-            userPages.signOutButonu.click(); // Çıkış butonuna tıklanır
+            adminPages.avatarDropdownMenuButonu.click();
+            ReusableMethods.bekle(1);
+            adminPages.signOutButonu.click();
+            ReusableMethods.bekle(1);
             Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
+            ReusableMethods.bekle(1);
             //Sayfayı kapatır.
             Driver.quitDriver();
 

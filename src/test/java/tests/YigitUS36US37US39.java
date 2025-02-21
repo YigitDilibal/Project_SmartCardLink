@@ -609,6 +609,11 @@ public class YigitUS36US37US39 {
         userPages.userDropdownMenuManageSubscription.click();
         userPages.userSubscriptionUpgradeButton.click();
         userPages.manageSubscriptionUnlimitedSekmesi.click();
+
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.driver;
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",userPages.unlimitedPlanSwitchPlanButonu);
+        ReusableMethods.bekle(1);
+
         userPages.unlimitedPlanSwitchPlanButonu.click();
         userPages.userSubscriptionSelectPaymentDdwButton.click();
         userPages.userSubscriptionDropdownStripeButton.click();
