@@ -112,6 +112,7 @@ public class FaigUS8US9US10 {
         userPages.unlimitedPlanSwitchPlanButonu.click();
         ReusableMethods.bekle(1);
         jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",userPages.userSubscriptionSelectPaymentDdwButton);
+        ReusableMethods.bekle(1);
         userPages.userSubscriptionSelectPaymentDdwButton.click();
         ReusableMethods.bekle(1);
         userPages.userSubscriptionDropdownStripeButton.click();
@@ -140,6 +141,33 @@ public class FaigUS8US9US10 {
         adminPages.signOutButonu.click();
         ReusableMethods.bekle(1);
         Driver.quitDriver();
+    }
+
+
+    @Test
+    public void US08TC05ZiyaretciOlarakVcardGoruntulemeTesti(){
+
+        //Ziyaretci URL ile siteye erişim sağlar
+        Driver.getDriver().get(ConfigReader.getProperty("vcardUrl"));
+
+        //Ziyaretci Subscribe linkini görüntüler
+
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+
+        Driver.quitDriver();
+
     }
 
 

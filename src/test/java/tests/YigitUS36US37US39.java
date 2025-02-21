@@ -615,6 +615,8 @@ public class YigitUS36US37US39 {
         ReusableMethods.bekle(1);
 
         userPages.unlimitedPlanSwitchPlanButonu.click();
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",userPages.userSubscriptionSelectPaymentDdwButton);
+        ReusableMethods.bekle(1);
         userPages.userSubscriptionSelectPaymentDdwButton.click();
         userPages.userSubscriptionDropdownStripeButton.click();
         userPages.paySwitchPlanButton.click();
