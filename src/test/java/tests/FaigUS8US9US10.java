@@ -111,6 +111,7 @@ public class FaigUS8US9US10 {
 
         userPages.unlimitedPlanSwitchPlanButonu.click();
         ReusableMethods.bekle(1);
+        jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",userPages.userSubscriptionSelectPaymentDdwButton);
         userPages.userSubscriptionSelectPaymentDdwButton.click();
         ReusableMethods.bekle(1);
         userPages.userSubscriptionDropdownStripeButton.click();
