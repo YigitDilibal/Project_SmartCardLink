@@ -81,10 +81,12 @@ public class AdminPages {
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][2])")
     public WebElement adminPlansTabloPriceSiralamaButonu;
 
+
+
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][3])")
     public WebElement adminPlansTabloStatusSiralamaButonu;
 
-    @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][4])")
+    @FindBy(xpath = "(//*[.='Duration'])")
     public WebElement adminPlansTabloDurationSiralamaButonu;
 
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][5])")
@@ -105,7 +107,7 @@ public class AdminPages {
     @FindBy(id = "perPage")
     public WebElement adminPlansShowDropdownButonu;
 
-    @FindBy(xpath = "//li[@class='page-item disabled']")
+    @FindBy(xpath = "//button[@dusk='previousPage.plan-table']")
     public WebElement adminPlansPageBackButonu;
 
     @FindBy(xpath = "//button[.='›']")
@@ -338,6 +340,79 @@ public class AdminPages {
 
     @FindBy (xpath = "//*[@class='swal-overlay swal-overlay--show-modal']")
     public WebElement deleteUserConfirmMessage;
+
+    @FindBy(id = "editName")
+    public WebElement editCountryNameKutusu;
+
+    @FindBy(id = "editShortCode")
+    public WebElement editCountryShortCodeKutusu;
+
+    @FindBy(id = "editPhoneCode")
+    public WebElement editCountryPhoneCodeKutusu;
+
+    @FindBy(xpath = "//select[@id='editCountryId']")
+    public WebElement editStateDdmMenu;
+
+    @FindBy(xpath = "//select[@id='editStateId']")
+    public WebElement editCityDdmMenu;
+
+    @FindBy(xpath = "(//button[.='Save'])[2]")
+    public WebElement editCountryCitySaveButonu;
+
+    @FindBy(xpath = "//*[@data-icon='trash']")
+    public List<WebElement> countriesSayfasiDeleteButonlariList;
+
+    @FindBy(xpath = "//*[.='Yes, Delete!']")
+    public WebElement countriesSayfasiYesDeleteButonu;
+
+    @FindBy(xpath = "//button[.='2']")
+    public WebElement ikinciSayfayaGecmeButonu;
+
+    @FindBy(xpath = "//*[@id='perPage']")
+    public WebElement sayfadakiOgeSayisiBelirlemeDdm;
+
+    @FindBy(xpath = "(//button[.='Discard'])[1]")
+    public WebElement newCountryDiscardButton;
+
+    @FindBy (xpath = "//input[@ * = 'form-control ps-8'] ")
+    public WebElement aboneKullaniciAramaKutusu;
+
+    @FindBy (xpath = "//span[ . = 'Kullanıcı adı']")
+    public WebElement aboneKullaniciAdi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Plan Adı' )] ")
+    public WebElement aboneKullaniciPlanAdi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Başlangıç tarihi' )] ")
+    public WebElement aboneKullaniciBaslangicTarihi;
+
+    @FindBy (xpath = "//* [contains ( text (), 'Bitiş tarihi' )] [1]")
+    public WebElement aboneKullanicilarBitisTarihi;
+
+    @FindBy (xpath = "//span[ . = 'Bağlı Olduğu'] ")
+    public WebElement bagliOlduguKullaniciAdi;
+
+    @FindBy (xpath = "//span[ . = 'kullanıcı'] ")
+    public WebElement bagliKullaniciAdi;
+
+    @FindBy (xpath = "//span[ . = 'Üyelik tutarı'] ")
+    public WebElement bagliKullaniciUyelikTutari;
+
+    @FindBy (xpath = "//span[ . = 'Tarih']")
+    public WebElement bagliKullaniciUyelikTarihi;
+
+    @FindBy(xpath = "(//td[@class='text-center'])[1]")
+    public WebElement adminPlansDurationSıralananElement;
+
+    @FindBy(xpath = "//li[@id='select2-selectLanguage-result-trzx-tr']")
+    public WebElement changeLanguageTurkish;
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement changeLanguageSearchInput;
+
+    @FindBy(xpath = "//li[@class='select2-results__option select2-results__message']")
+    public WebElement changeLanguageNoResultsFoundText;
+
 
 
 
