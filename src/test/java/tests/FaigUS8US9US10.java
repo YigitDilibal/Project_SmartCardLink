@@ -144,4 +144,31 @@ public class FaigUS8US9US10 {
     }
 
 
+    @Test
+    public void US08TC05ZiyaretciOlarakVcardGoruntulemeTesti(){
+
+        //Ziyaretci URL ile siteye erişim sağlar
+        Driver.getDriver().get(ConfigReader.getProperty("vcardUrl"));
+
+        //Ziyaretci Subscribe linkini görüntüler
+
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+        ReusableMethods.pageDown();
+        ReusableMethods.bekle(2);
+
+        Driver.quitDriver();
+
+    }
+
+
 }

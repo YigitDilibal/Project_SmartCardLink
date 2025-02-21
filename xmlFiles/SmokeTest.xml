@@ -27,6 +27,11 @@
                     <include name="AdminGüvenliCikisIslemiTesti"/>
                 </methods>
             </class>
+            <class name="tests.FaigUS8US9US10">
+                <methods>
+                    <include name="US08TC05ZiyaretciOlarakVcardGoruntulemeTesti"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
