@@ -86,7 +86,7 @@ public class AdminPages {
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][3])")
     public WebElement adminPlansTabloStatusSiralamaButonu;
 
-    @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][4])")
+    @FindBy(xpath = "(//*[.='Duration'])")
     public WebElement adminPlansTabloDurationSiralamaButonu;
 
     @FindBy(xpath = "(//span[@class='relative d-flex align-items-center'][5])")
@@ -107,7 +107,7 @@ public class AdminPages {
     @FindBy(id = "perPage")
     public WebElement adminPlansShowDropdownButonu;
 
-    @FindBy(xpath = "//li[@class='page-item disabled']")
+    @FindBy(xpath = "//button[@dusk='previousPage.plan-table']")
     public WebElement adminPlansPageBackButonu;
 
     @FindBy(xpath = "//button[.='›']")
@@ -338,6 +338,17 @@ public class AdminPages {
     @FindBy (xpath = "//span[ . = 'Tarih']")
     public WebElement bagliKullaniciUyelikTarihi;
 
+    @FindBy(xpath = "(//td[@class='text-center'])[1]")
+    public WebElement adminPlansDurationSıralananElement;
+
+    @FindBy(xpath = "//li[@id='select2-selectLanguage-result-trzx-tr']")
+    public WebElement changeLanguageTurkish;
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement changeLanguageSearchInput;
+
+    @FindBy(xpath = "//li[@class='select2-results__option select2-results__message']")
+    public WebElement changeLanguageNoResultsFoundText;
 
 
 
