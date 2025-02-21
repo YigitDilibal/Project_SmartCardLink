@@ -340,7 +340,6 @@ public class AdminPages {
     public WebElement deleteUserConfirmMessage;
 
 
-    //*[@class='swal-overlay swal-overlay--show-modal']
 
 
 
