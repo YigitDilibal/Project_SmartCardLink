@@ -25,7 +25,7 @@ public class UserPages {
     @FindBy (xpath ="//*[@data-id='2']")
     public WebElement userSilverSwitchPlanButton ;
 
-    @FindBy (xpath ="(//*[@role='combobox'])[1]")
+    @FindBy (xpath ="//*[@id='select2-paymentType-container']")
     public WebElement userSubscriptionSelectPaymentDdwButton ;
 
     @FindBy (xpath="(//li[contains(@id, 'select2-paymentType-result')])[1]\n")
@@ -303,6 +303,23 @@ public class UserPages {
   
     @FindBy(xpath = "(//*[.='Cancel'])[1]")
     public WebElement withdrawAmountPenceresiCancelButton;
+
+    @FindBy(xpath = "//*[contains(@id, 'select2-paymentType-result-') and contains(@id, '-4')]" )
+    public WebElement getUserSubscriptionDropdownManuallyButon;
+
+    @FindBy(xpath = "//*[@type='submit']")
+    public WebElement userSubscriptionCashPayButton;
+
+
+
+
+
+
+
+
+
+
+
  
 
 }

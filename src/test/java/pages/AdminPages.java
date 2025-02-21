@@ -276,6 +276,72 @@ public class AdminPages {
     @FindBy (xpath = "//*[@id='dashboardChangeIncomeChart']")
     public WebElement chartToggleButton;
 
+    @FindBy (xpath = "//*[@placeholder='First Name']")
+    public WebElement addUserFirstName;
+
+    @FindBy (xpath = "//*[@placeholder='Last Name']")
+    public WebElement addUserLastName;
+
+    @FindBy (xpath = "//*[@placeholder='Email']")
+    public WebElement addUserEmail;
+
+    @FindBy (xpath = "//*[@placeholder='Password']")
+    public WebElement addUserPassword;
+
+    @FindBy (xpath = "//*[@name='password_confirmation']")
+    public WebElement addUserConfirmPassword;
+
+    @FindBy (xpath = "//*[@class='btn btn-primary me-3']")
+    public WebElement addUserSaveButton;
+
+    @FindBy (xpath = "//*[@role='alert']")
+    public WebElement addUserSuccessMessage;
+
+    @FindBy (xpath = "(//input[@data-id='1357'])[2]")
+    public WebElement userIsActiveButton;
+
+    @FindBy (xpath = "//*[@class='toast-message']")
+    public WebElement userIsActiveSuccessMessage;
+
+    @FindBy (xpath = "(//*[@data-icon='pen-to-square'])[1]")
+    public WebElement userEditButton;
+
+    @FindBy (xpath = "//*[@role='alert']")
+    public WebElement userEditSuccessMessage;
+
+    @FindBy (xpath = "(//*[@style='display: none;'])[1]")
+    public WebElement userEditSuccessMessageInvinsible;
+
+    @FindBy (xpath = "(//*[@data-icon='key'])[1]")
+    public WebElement userChangePasswordButton;
+
+    @FindBy (xpath = "(//*[@placeholder='New Password'])[2]")
+    public WebElement changeNewPassword;
+
+    @FindBy (xpath = "(//*[@placeholder='Confirm Password'])[2]")
+    public WebElement changeConfirmPassword;
+
+    @FindBy(id = "UserPasswordChangeBtn")
+    public WebElement changePasswordSaveButton;
+
+    @FindBy (xpath = "(//*[@data-icon='trash'])[1]")
+    public WebElement deleteUserButton;
+
+    @FindBy (xpath = "//*[@class='swal-text']")
+    public WebElement deleteUserWarningMessage;
+
+    @FindBy (xpath = "//*[@class='swal-button swal-button--cancel']")
+    public WebElement deleteUserCancelButton;
+
+    @FindBy (xpath = "//*[@class='swal-button swal-button--confirm']")
+    public WebElement deleteUserAcceptButton;
+
+    @FindBy (xpath = "//*[@class='swal-overlay swal-overlay--show-modal']")
+    public WebElement deleteUserConfirmMessage;
+
+
+    //*[@class='swal-overlay swal-overlay--show-modal']
+
 
 
 
