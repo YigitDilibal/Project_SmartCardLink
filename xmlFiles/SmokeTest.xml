@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+       Sunum  testi icin
+
+
+-->
+
+<suite name="Ozel test suite'i">
+    <test name="Istenen Method'lari calistirma">
+        <classes>
+            <class name="tests.FaigUS8US9US10">
+                <methods>
+                    <include name="US37TC07KayitVeSatinAlmaTesti"/>
+                </methods>
+            </class>
+            <class name="tests.SumeyraUS19US21US22">
+                <methods>
+                    <include name="loginPageLoadTest"/>
+                    <include name="gecerliLoginTesti"/>
+                    <include name="gecersizMailileLoginTesti"/>
+
+                </methods>
+            </class>
+            <class name="tests.SedaUS28US30US35">
+                <methods>
+                    <include name="AdminGüvenliCikisIslemiTesti"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

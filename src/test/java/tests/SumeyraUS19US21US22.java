@@ -38,36 +38,45 @@ public class SumeyraUS19US21US22 extends TestBaseRapor {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
         anasayfaPages.homepageSıgnInButonu.click();
+        ReusableMethods.bekle(1);
         //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçerli mail girer.
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
+        ReusableMethods.bekle(1);
         //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+        ReusableMethods.bekle(1);
         //Login tusuna basar ve kendi sayfasına erişim saglar.
         anasayfaPages.signInLoginButonu.click();
+        ReusableMethods.bekle(1);
         //Sıgn out olur ve sayfayı kapatır.
         adminPages.avatarDropdownMenuButonu.click();
         ReusableMethods.bekle(2);
         adminPages.signOutButonu.click();
+        ReusableMethods.bekle(1);
         // Başarılı bir şekilde signin sayfasına geri döner.
         Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
-        Driver.quitDriver();
     }
         @Test
         public void gecersizMailileLoginTesti () {
             //Yönetici URL ile siteye erişir
             Driver.getDriver().get(ConfigReader.getProperty("url"));
+            ReusableMethods.bekle(1);
             //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
             anasayfaPages.homepageSıgnInButonu.click();
+            ReusableMethods.bekle(1);
             //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçersiz mail girer.
             anasayfaPages.signInEmailKutusu.sendKeys("computer@gmail.com");
+            ReusableMethods.bekle(1);
             //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+            ReusableMethods.bekle(1);
             //Login tusuna basar.
             anasayfaPages.signInLoginButonu.click();
+            ReusableMethods.bekle(1);
             // Başarılı bir şekilde login olamadığını test edin.
             Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
+            ReusableMethods.bekle(1);
            //sayfayı kapatır.
-            Driver.quitDriver();
     }
     @Test
     public void gecersizPasswordileLoginTesti () {
@@ -157,16 +166,20 @@ public class SumeyraUS19US21US22 extends TestBaseRapor {
         //Yönetici Sıgn ın sayfasına erişim sağlar.
         ReusableMethods.bekle(2);
         anasayfaPages.homepageSıgnInButonu.click();
+        ReusableMethods.bekle(1);
         //Yönetici Sign in Formunu görüntüler.
         Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
+        ReusableMethods.bekle(1);
         //Yönetici email text box ını görünütler.
         Assert.assertTrue(anasayfaPages.signInEmailKutusu.isDisplayed());
+        ReusableMethods.bekle(1);
         //Yönetici password text box ını görüntüler.
         Assert.assertTrue(anasayfaPages.signInPasswordKutusu.isDisplayed());
+        ReusableMethods.bekle(1);
         //Yönetici remember me checkbox ını görüntüler.
         Assert.assertTrue(anasayfaPages.signInRemembermeBox.isDisplayed());
+        ReusableMethods.bekle(1);
         //Sayfayı kapatır
-        Driver.quitDriver();
     }
     // US- 21 Bir kullanıcı olarak Dashboard sayfamdan güvenli bir şekilde çıkış yapabilmek istiyorum. TC-01
     @Test
