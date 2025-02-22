@@ -17,8 +17,10 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.lang.reflect.Method;
+import java.util.Set;
 
 import static utilities.Driver.driver;
+import static utilities.Driver.quitDriver;
 
 public class BurakUs18Us24Us25 {
 
@@ -385,8 +387,87 @@ public void US18_UserValidCreditCardTest() {
 
     //Kullanıcı çıkış yapar
 
+}
+@Test
+    public void whenUserIsOnPaymentStep_thenLinkAndGooglePayButtonsShouldBeVisible(){
+
+    //Kullanıcı abonelik bölumune gider
+    userPages.userAvatarDropdownMenuButonu.click();
+    userPages.userDropdownMenuManageSubscription.click();
+
+    //Kullanıcı abonelik yukseltme butonuna tıklar
+    userPages.userSubscriptionUpgradeButton.click();
+    ReusableMethods.bekle(3);
+
+    //Kullanıcı silver aboneligini seçer
+    js.executeScript("arguments[0].click();", userPages.userSilverSwitchPlanButton);
+    ReusableMethods.bekle(1);
+    actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+    //Kullanıcı sayfadaki dropdown menuyu açar ve stripe butonuna tıklar
+    userPages.userSubscriptionSelectPaymentDdwButton.click();
+    actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+    ReusableMethods.bekle(2);
+    userPages.userSubscriptionDropdownStripeButton.click();
+
+    //Kullanıcı pay switch plan butonuna tıklar
+    userPages.paySwitchPlanButton.click();
+
+    //Sayfanın title ı alınır
+    String actualTitle = driver.getTitle();
+
+    //Main window adında bir string degere suanki windowhandle degeri atanır
+    ReusableMethods.bekle(3);
+    String mainWindow = driver.getWindowHandle();
+
+    //Iframenin içine geçiş yapılır ve link b utonuna tıklanır
+    driver.switchTo().frame(userPages.iframe);
+    ReusableMethods.bekle(2);
+    userPages.userSubscriptionLinkPayButton.click();
+
+    ReusableMethods.bekle(3);
+
+
+    Set<String> allWindows = driver.getWindowHandles();
+
+
+    String newWindow ="";
+
+    for (String window : allWindows) {
+        if (!window.equals(mainWindow)) {
+            newWindow = window;
+            break;
+
+
+        }
+    }
+    driver.switchTo().window(newWindow);
+    String expectedTitle = "Link";
+
+    driver.switchTo().window(mainWindow);
+
+    Assert.assertNotEquals(actualTitle,expectedTitle);
+    System.out.println(expectedTitle);
+    System.out.println(actualTitle);
+
+    userPages.userSubscriptionLinkCancelButton.click();
+
+    //Kullanıcı geri döner
+    userPages.subscriptionPurchaseBackButton.click();
+    userPages.paymentFailureBackButton.click();
+
+    //Kullanıcı çıkış yapar
 
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -304,22 +304,72 @@ public class UserPages {
     @FindBy(xpath = "(//*[.='Cancel'])[1]")
     public WebElement withdrawAmountPenceresiCancelButton;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @FindBy(xpath = "//*[contains(@id, 'select2-paymentType-result-') and contains(@id, '-4')]" )
     public WebElement getUserSubscriptionDropdownManuallyButon;
 
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement userSubscriptionCashPayButton;
 
+    @FindBy(xpath = "//*[@class='LinkButton-genericText']")
+    public WebElement userSubscriptionLinkPayButton;
 
+    @FindBy(xpath = "//iframe[contains(@src, 'https://js.stripe.com/v3/elements-inner-express-checkout')]\n")
+    public WebElement iframe;
 
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//button[text()='Ödemeyi iptal et']")
+    public WebElement userSubscriptionLinkCancelButton;
  
 
 }
