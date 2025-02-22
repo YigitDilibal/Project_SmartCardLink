@@ -331,6 +331,24 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='serviceSave']")
     public WebElement meriDentNewAppointmentSaveButton;
 
+    @FindBy(xpath = "(//*[@class='aside-menu-title'])[4]")
+    public WebElement meriDentAdminAppointmentButton;
+
+    @FindBy(xpath = "(//*[@class='badge bg-warning '])[1]")
+    public WebElement meriDentAdminAppointmentPendingButton;
+
+    @FindBy(xpath = "//*[@class='swal-button swal-button--confirm']")
+    public WebElement meriDentAdminAppointmentPendingApproveButton;
+
+
+
+
+
+
+
+
+
+
 
 
 
