@@ -323,16 +323,6 @@ public class UserPages {
 
 
 
-    //*[@class='LinkButton-genericText']
-    //iframe[contains(@src, 'https://js.stripe.com/v3/elements-inner-express-checkout')]
-
-    //iframe[@name='__privateStripeFrame0944']
-
-
-
-//*[@name='__privateStripeFrame0944']
-
-//*[@class='LinkButton-logo']
 
 
 
