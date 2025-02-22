@@ -304,6 +304,58 @@ public class UserPages {
     @FindBy(xpath = "(//*[.='Cancel'])[1]")
     public WebElement withdrawAmountPenceresiCancelButton;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @FindBy(xpath = "//*[contains(@id, 'select2-paymentType-result-') and contains(@id, '-4')]" )
     public WebElement getUserSubscriptionDropdownManuallyButon;
 
@@ -318,22 +370,6 @@ public class UserPages {
 
     @FindBy(xpath = "//button[text()='Ödemeyi iptal et']")
     public WebElement userSubscriptionLinkCancelButton;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
 
 }
