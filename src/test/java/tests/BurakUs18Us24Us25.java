@@ -115,7 +115,12 @@ public void US18_UserValidCreditCardTest() {
     //Kullanıcı silver aboneligini seçer
     js.executeScript("arguments[0].click();", userPages.userSilverSwitchPlanButton);
     ReusableMethods.bekle(1);
-    actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+    //actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+
+    js.executeScript("arguments[0].scrollIntoView(true);", userPages.userSubscriptionSelectPaymentDdwButton);
+
+    ReusableMethods.bekle(2);
 
     //Kullanıcı sayfadaki dropdown menuyu açar ve stripe butonuna tıklar
     userPages.userSubscriptionSelectPaymentDdwButton.click();
