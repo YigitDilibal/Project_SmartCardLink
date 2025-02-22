@@ -55,6 +55,16 @@ public class BurakUs18Us24Us25 {
 
         } else if (testName.toLowerCase().contains("dentist")) {
             Driver.getDriver().get(ConfigReader.getProperty("vcardUrl"));
+        } else if (testName.toLowerCase().contains("approved")) {
+            Driver.getDriver().get(ConfigReader.getProperty("url"));
+            anasayfaPages.homepageSıgnInButonu.click();
+
+            anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("vCardSumeyra"));
+            anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
+            anasayfaPages.signInLoginButonu.click();
+
+
+
 
 
     } else {
@@ -76,7 +86,7 @@ public class BurakUs18Us24Us25 {
     public void Quit(Method method) {
 
         String testName = method.getName();
-        if (testName.contains("dentist")) {
+        if (testName.toLowerCase().contains("dentist")) {
             driver.quit();
 
         } else {
@@ -472,7 +482,6 @@ public void US18_UserValidCreditCardTest() {
 @Test
     public void whenMembersBooksAppointmentThroughVCard_thenAppointmentShouldBeVisibleToDentist(){
 
-    //actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
 
     ReusableMethods.bekle(2);
     js.executeScript("arguments[0].scrollIntoView(true);", userPages.meriDentPickDate);
@@ -486,18 +495,28 @@ public void US18_UserValidCreditCardTest() {
         ReusableMethods.bekle(2);
         userPages.meriDentNewAppointmentName.sendKeys(faker.name().fullName());
         userPages.meriDentNewAppointmentEmail.sendKeys(faker.internet().emailAddress());
-        userPages.meriDentNewAppointmentPhone.sendKeys(faker.phoneNumber().phoneNumber());
+        userPages.meriDentNewAppointmentPhone.sendKeys(ConfigReader.getProperty("PhoneNumber"));
         userPages.meriDentNewAppointmentSaveButton.click();
 
         ReusableMethods.bekle(2);
 
 
+}
+@Test
+    public void whenLabViewsAppointmentScreen_thenAppointmentIsDisplayedAndCanBeApproved(){
+
+     userPages.meriDentAdminAppointmentButton.click();
+     userPages.meriDentAdminAppointmentPendingButton.click();
+     ReusableMethods.bekle(2);
+     userPages.meriDentAdminAppointmentPendingApproveButton.click();
+     ReusableMethods.bekle(5);
 
 
 
 
 
 }
+
 
 
 
