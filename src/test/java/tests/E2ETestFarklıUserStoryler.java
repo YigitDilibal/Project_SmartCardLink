@@ -30,6 +30,9 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
 
     @Test (priority =1)
     public void US37TC07KaydolanKullanicininPaneldeGorunmesiTesti(){
+        // Raporlama: Test başlatıldı
+        extentTest = extentReports.createTest("US37TC07KaydolanKullanicininPaneldeGorunmesiTesti",
+                "Kaydolunan kullanıcının panelde görüntülenme testi");
 
         Faker faker = new Faker();
 
@@ -45,12 +48,14 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
         anasayfaPages.kayitSayfasiConfirmPassword.sendKeys(ConfigReader.getProperty("password"));
         anasayfaPages.kayitSayfasiTermsAndConditions.click();
         anasayfaPages.signInLoginButonu.click();
+        extentTest.info("Davet edilen kullanıcı siteye kayıt olur.");
 
         // giris yapar
 
         anasayfaPages.signInEmailKutusu.sendKeys(email);
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         anasayfaPages.signInLoginButonu.click();
+        extentTest.info("Davet edilen kullanıcı siteye giris yapar");
 
         // abonelik satin alir ve odeme yapar
 
@@ -58,6 +63,7 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
         userPages.userDropdownMenuManageSubscription.click();
         userPages.userSubscriptionUpgradeButton.click();
         userPages.manageSubscriptionUnlimitedSekmesi.click();
+        extentTest.info("Davet edilen kullanıcı  abonelik satin alir");
 
         JavascriptExecutor jse = (JavascriptExecutor) Driver.driver;
         jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",userPages.unlimitedPlanSwitchPlanButonu);
@@ -75,11 +81,12 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
         userPages.cardCvcInput.sendKeys(ConfigReader.getProperty("cardCvc"));
         userPages.cardHolderNameInput.sendKeys(faker.name().fullName());
         userPages.userSubscriptionPayButton.click();
+        extentTest.info("Davet edilen kullanıcı odeme yapar");
 
         userPages.backToSubscriptionButton.click();
 
         // çıkış yapar.-- Davet eden kullanıcı login sayfasına gider.
-
+        extentTest.info("Davet edilen kullanıcı çıkış yapar");
         adminPages.avatarDropdownMenuButonu.click();
         adminPages.signOutButonu.click();
 
@@ -88,21 +95,24 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("userYigitMail"));
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("userYigitSifre"));
         anasayfaPages.signInLoginButonu.click();
+        extentTest.info("Kullanıcı giriş bilgilerini girer ve logine basar.");
 
 
         //Dashboard'da "Affiliations" sekmesine tıklar.
 
         userPages.solPanelAffiliationsButonu.click();
+        extentTest.info("Dashboard'da \"Affiliations\" sekmesine tıklar.");
 
         //Panelde davet edilen kullanıcının listelendiğini kontrol eder.
         String xPath= "//*[.='"+email+"']";
         WebElement referredUser = Driver.getDriver().findElement(By.xpath(xPath));
 
         Assert.assertTrue(referredUser.isDisplayed());
-
+        extentTest.pass("Kullanıcı Panelde davet edilen kullanıcının listelendiğini başarılı bir şekilde görüntüler.");
         //sign out olur ve sayfaları kapatır.
         adminPages.avatarDropdownMenuButonu.click();
         adminPages.signOutButonu.click();
+        extentTest.info("Sign out olur ve sayfaları kapatır.");
 
     }
 
@@ -213,23 +223,29 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
 
     @Test(priority = 3)
     public void accountCreationTest (){
+        extentTest = extentReports.createTest("accountCreationTest",
+                "Yönetici yeni bir account oluşturabilmeli.");
 
         //Yönetici anasayfaya gider
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
+        extentTest.info("Yönetici anasayfaya gider");
 
         //Yönetici giriş bilgilerini girer ve login olur
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminburakumail"));
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         anasayfaPages.signInLoginButonu.click();
+        extentTest.info("Yönetici giriş bilgilerini girer ve login olur");
 
         Faker faker = new Faker();
 
         //yönetici login olur
         adminPages.dashboardSolPanelUsersButonu.click();
+        extentTest.info("Yönetici users butonuna tıklar");
 
         //Yönetici yeni kullanıcı ekleme butonuna tıklar
         adminPages.usersSekmesiAddUserButonu.click();
+        extentTest.info("Yönetici yeni kullanıcı ekleme butonuna tıklar");
 
         //Yönetici yeni kullanıcı bilgilerini girer
         adminPages.addUserFirstName.sendKeys(faker.name().firstName());
@@ -237,14 +253,18 @@ public class E2ETestFarklıUserStoryler extends TestBaseRapor {
         adminPages.addUserEmail.sendKeys(faker.internet().emailAddress());
         adminPages.addUserPassword.sendKeys(ConfigReader.getProperty("password"));
         adminPages.addUserConfirmPassword.sendKeys(ConfigReader.getProperty("password"));
+        extentTest.info("Yönetici yeni kullanıcı bilgilerini girer");
 
         //Save butonuna tıklar
         adminPages.addUserSaveButton.click();
+        extentTest.info("Save butonuna tıklar");
 
         //Ekranda işlemin başarılı olduguna dair mesaj göruntulenir
         adminPages.addUserSuccessMessage.isDisplayed();
+        extentTest.pass("Ekranda işlemin başarılı olduguna dair mesaj göruntulenir");
 
         //Yönetici çıkış yapar
+        extentTest.info("Yönetici çıkış yapar ve sayfayı kapatır.");
     }
 
 }
