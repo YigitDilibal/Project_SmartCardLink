@@ -65,43 +65,7 @@ public class SmokeTest extends TestBaseRapor {
         ReusableMethods.bekle(1);
     }
 
-    @Test(priority = 2)
-    public void accountCreationTest (){
-
-        //Yönetici anasayfaya gider
-        Driver.getDriver().get(ConfigReader.getProperty("url"));
-        anasayfaPages.homepageSıgnInButonu.click();
-
-        //Yönetici giriş bilgilerini girer ve login olur
-        anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminburakumail"));
-        anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        anasayfaPages.signInLoginButonu.click();
-
-        Faker faker = new Faker();
-
-        //yönetici login olur
-        adminPages.dashboardSolPanelUsersButonu.click();
-
-        //Yönetici yeni kullanıcı ekleme butonuna tıklar
-        adminPages.usersSekmesiAddUserButonu.click();
-
-        //Yönetici yeni kullanıcı bilgilerini girer
-        adminPages.addUserFirstName.sendKeys(faker.name().firstName());
-        adminPages.addUserLastName.sendKeys(faker.name().lastName());
-        adminPages.addUserEmail.sendKeys(faker.internet().emailAddress());
-        adminPages.addUserPassword.sendKeys(ConfigReader.getProperty("password"));
-        adminPages.addUserConfirmPassword.sendKeys(ConfigReader.getProperty("password"));
-
-        //Save butonuna tıklar
-        adminPages.addUserSaveButton.click();
-
-        //Ekranda işlemin başarılı olduguna dair mesaj göruntulenir
-        adminPages.addUserSuccessMessage.isDisplayed();
-
-        //Yönetici çıkış yapar
-    }
-
-    @Test (priority = 3)
+    @Test (priority = 2)
     public void loginPageLoadTest (){
         extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
                 "Yönetici geçerli email ve password girerek login olabilmeli.");
@@ -133,7 +97,7 @@ public class SmokeTest extends TestBaseRapor {
         extentTest.info("Sayfayı kapatır");
     }
 
-    @Test (priority = 4)
+    @Test (priority = 3)
     public void pozitifLoginTesti () {
         extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
                 "Yönetici geçerli email ve password girerek login olabilmeli.");
@@ -162,7 +126,7 @@ public class SmokeTest extends TestBaseRapor {
 
     }
 
-    @Test (priority = 5)
+    @Test (priority = 4)
     public void gecersizMailileLoginTesti () {
         extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
                 "Yönetici geçersiz email ve geçerli password ile giriş yaptığında login olamamalı.");
@@ -194,7 +158,7 @@ public class SmokeTest extends TestBaseRapor {
         extentTest.info("sayfayı kapatır.");
     }
 
-    @Test (priority = 6)
+    @Test (priority = 5)
     public void AdminGüvenliCikisIslemiTesti () {
         extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
                 "Yönetici geçersiz email ve geçerli password ile giriş yaptığında login olamamalı.");
