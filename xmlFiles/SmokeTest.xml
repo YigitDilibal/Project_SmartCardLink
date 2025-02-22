@@ -17,7 +17,7 @@
             <class name="tests.SumeyraUS19US21US22">
                 <methods>
                     <include name="loginPageLoadTest"/>
-                    <include name="gecerliLoginTesti"/>
+                    <include name="pozitifLoginTesti"/>
                     <include name="gecersizMailileLoginTesti"/>
 
                 </methods>
