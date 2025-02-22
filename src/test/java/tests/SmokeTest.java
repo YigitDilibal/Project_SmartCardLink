@@ -32,6 +32,8 @@ public class SmokeTest extends TestBaseRapor {
 
     @Test (priority = 1)
     public void US37TC07SiteyeKayitOlmaTesti(){
+        extentTest = extentReports.createTest("US37TC07SiteyeKayitOlmaTesti",
+                "Kullanıcı geçerli bilgileri girerek siteye kayıt olabilmeli.");
 
         Faker faker = new Faker();
 
@@ -41,27 +43,36 @@ public class SmokeTest extends TestBaseRapor {
 
         userPages.newVcardSayfasiFirstNameKutusu.sendKeys(faker.name().firstName());
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanici name'i olarak gecerli name girer");
         userPages.newVcardSayfasiLastNameKutusu.sendKeys(faker.name().lastName());
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanici lastname'i olarak gecerli lastname girer");
         String email = faker.internet().emailAddress();
         userPages.affiliationsSayfasiSendInviteBolumuEmailKutusu.sendKeys(email);
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanici email'i olarak gecerli email girer");
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanici password olarak gecerli password girer");
         anasayfaPages.kayitSayfasiConfirmPassword.sendKeys(ConfigReader.getProperty("password"));
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanici confirmpassword olarak gecerli confirmpassword girer");
         anasayfaPages.kayitSayfasiTermsAndConditions.click();
         ReusableMethods.bekle(1);
         anasayfaPages.signInLoginButonu.click();
         ReusableMethods.bekle(1);
+        extentTest.info("Sıgn ın butonuna tıklar");
 
         // giris yapar
 
         anasayfaPages.signInEmailKutusu.sendKeys(email);
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanıcı mail ini girer.");
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
         ReusableMethods.bekle(1);
+        extentTest.info("Kullanıcı password ünü girer.");
         anasayfaPages.signInLoginButonu.click();
+        extentTest.pass("Oluşturuduğu bilgiler ile login olur ve başarılı bir şekilde kayıt olduğunu test eder");
         ReusableMethods.bekle(1);
     }
 
