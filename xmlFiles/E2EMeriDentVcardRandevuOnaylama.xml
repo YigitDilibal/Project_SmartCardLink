@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+       TEST SPEED Sunum
+
+
+-->
+
+<suite name="Canlı Test">
+    <test name="MeriDent Vcard Randevu Onaaylama E2E Testi">
+        <classes>
+            <class name="tests.MeriDentTest">
+                <methods>
+                    <include name="whenMembersBooksAppointmentThroughVCard_thenAppointmentShouldBeVisibleToDentist"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

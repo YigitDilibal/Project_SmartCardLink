@@ -7,9 +7,10 @@
 -->
 
 <suite name="Canlı Test">
-    <test name="Smoke Test">
+    <test name="Farklı US ait E2E Testler">
         <classes>
-            <class name="tests.SmokeTest"> </class>
+            <class name="tests.E2ETestFarklıUserStoryler">
+            </class>
         </classes>
     </test>
 </suite>
