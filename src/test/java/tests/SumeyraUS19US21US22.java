@@ -30,53 +30,64 @@ public class SumeyraUS19US21US22 extends TestBaseRapor {
         adminPages = new AdminPages();
         userPages = new UserPages();
     }
-
     @Test
-    public void gecerliLoginTesti () {
+    public void pozitifLoginTesti () {
+        extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+                "Yönetici geçerli email ve password girerek login olabilmeli.");
         //Yönetici URL ile siteye erişir
-
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+        extentTest.info("Yönetici URL ile siteye erişir");
         //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
         anasayfaPages.homepageSıgnInButonu.click();
-        ReusableMethods.bekle(1);
+        extentTest.info("Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar");
         //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçerli mail girer.
+        Assert.assertTrue(anasayfaPages.signInEmailKutusu.isDisplayed());
         anasayfaPages.signInEmailKutusu.sendKeys(ConfigReader.getProperty("adminsumeyramail"));
-        ReusableMethods.bekle(1);
+        extentTest.pass("Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçerli mail girer.");
         //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
+        Assert.assertTrue(anasayfaPages.signInPasswordKutusu.isDisplayed());
         anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
-        ReusableMethods.bekle(1);
+        extentTest.pass("Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.");
         //Login tusuna basar ve kendi sayfasına erişim saglar.
         anasayfaPages.signInLoginButonu.click();
-        ReusableMethods.bekle(1);
+        extentTest.info("Login tusuna basar ve kendi sayfasına erişim saglar.");
         //Sıgn out olur ve sayfayı kapatır.
         adminPages.avatarDropdownMenuButonu.click();
         ReusableMethods.bekle(2);
         adminPages.signOutButonu.click();
-        ReusableMethods.bekle(1);
-        // Başarılı bir şekilde signin sayfasına geri döner.
-        Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
+        extentTest.info("Sıgn out olur ve sayfayı kapatır.");
+
     }
         @Test
         public void gecersizMailileLoginTesti () {
+            extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+                    "Yönetici geçersiz email ve geçerli password ile giriş yaptığında login olamamalı.");
             //Yönetici URL ile siteye erişir
             Driver.getDriver().get(ConfigReader.getProperty("url"));
             ReusableMethods.bekle(1);
+            extentTest.info("Yönetici URL ile siteye erişir");
             //Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar
             anasayfaPages.homepageSıgnInButonu.click();
             ReusableMethods.bekle(1);
+            extentTest.info("Yönetici Sıgn ın linkine tıklar ve  Sıgn ın sayfasına erişim sağlar");
             //Sıgn ın sayfasında Email kutusunun oldugunu dogrular ve geçersiz mail girer.
             anasayfaPages.signInEmailKutusu.sendKeys("computer@gmail.com");
             ReusableMethods.bekle(1);
+            extentTest.info("Sıgn ın sayfasında Email kutusuna geçersiz email girer.");
             //Sıgn ın sayfasında password kutusunun oldugunu dogrular ve password kutusununa gecerli password girer.
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
             ReusableMethods.bekle(1);
+            extentTest.info("Sıgn ın sayfasında  password kutusununa gecerli password girer.");
             //Login tusuna basar.
             anasayfaPages.signInLoginButonu.click();
             ReusableMethods.bekle(1);
+            extentTest.info("Login tusuna basar.");
             // Başarılı bir şekilde login olamadığını test edin.
             Assert.assertTrue(anasayfaPages.signInLoginButonu.isDisplayed());
             ReusableMethods.bekle(1);
+            extentTest.pass("Başarılı bir şekilde login olamadığını test eder.");
            //sayfayı kapatır.
+            extentTest.info("sayfayı kapatır.");
     }
     @Test
     public void gecersizPasswordileLoginTesti () {
@@ -161,25 +172,34 @@ public class SumeyraUS19US21US22 extends TestBaseRapor {
     }
     @Test
     public void loginPageLoadTest (){
+        extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+                "Yönetici geçerli email ve password girerek login olabilmeli.");
         //Yönetici URL ile siteye erişim sağlar
         Driver.getDriver().get(ConfigReader.getProperty("url"));
+        extentTest.info("Yönetici URL ile siteye erişim sağlar");
         //Yönetici Sıgn ın sayfasına erişim sağlar.
         ReusableMethods.bekle(2);
         anasayfaPages.homepageSıgnInButonu.click();
         ReusableMethods.bekle(1);
+        extentTest.info("Yönetici Sıgn ın sayfasına erişim sağlar.");
         //Yönetici Sign in Formunu görüntüler.
         Assert.assertTrue(anasayfaPages.signInFormu.isDisplayed());
         ReusableMethods.bekle(1);
+        extentTest.pass("Yönetici Sign in Formunu görüntüler");
         //Yönetici email text box ını görünütler.
         Assert.assertTrue(anasayfaPages.signInEmailKutusu.isDisplayed());
+        extentTest.pass("Yönetici email text box ını görünütler.");
         ReusableMethods.bekle(1);
         //Yönetici password text box ını görüntüler.
         Assert.assertTrue(anasayfaPages.signInPasswordKutusu.isDisplayed());
+        extentTest.pass("Yönetici password text box ını görüntüler.");
         ReusableMethods.bekle(1);
         //Yönetici remember me checkbox ını görüntüler.
         Assert.assertTrue(anasayfaPages.signInRemembermeBox.isDisplayed());
+        extentTest.pass("Yönetici remember me checkbox ını görüntüler.");
         ReusableMethods.bekle(1);
         //Sayfayı kapatır
+        extentTest.info("Sayfayı kapatır");
     }
     // US- 21 Bir kullanıcı olarak Dashboard sayfamdan güvenli bir şekilde çıkış yapabilmek istiyorum. TC-01
     @Test
