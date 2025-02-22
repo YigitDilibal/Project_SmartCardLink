@@ -78,7 +78,7 @@ public class SmokeTest extends TestBaseRapor {
 
     @Test (priority = 2)
     public void loginPageLoadTest (){
-        extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+        extentTest = extentReports.createTest("loginPageLoadTest",
                 "Yönetici geçerli email ve password girerek login olabilmeli.");
         //Yönetici URL ile siteye erişim sağlar
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -139,7 +139,7 @@ public class SmokeTest extends TestBaseRapor {
 
     @Test (priority = 4)
     public void gecersizMailileLoginTesti () {
-        extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+        extentTest = extentReports.createTest("gecersizMailileLoginTesti",
                 "Yönetici geçersiz email ve geçerli password ile giriş yaptığında login olamamalı.");
         //Yönetici URL ile siteye erişir
         Driver.getDriver().get(ConfigReader.getProperty("url"));
@@ -171,7 +171,7 @@ public class SmokeTest extends TestBaseRapor {
 
     @Test (priority = 5)
     public void AdminGüvenliCikisIslemiTesti () {
-        extentTest = extentReports.createTest("US22TC01PozitifLoginTesti",
+        extentTest = extentReports.createTest("AdminGüvenliCikisIslemiTesti",
                 "Yönetici geçersiz email ve geçerli password ile giriş yaptığında login olamamalı.");
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         anasayfaPages.homepageSıgnInButonu.click();
