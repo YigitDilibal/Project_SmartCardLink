@@ -304,25 +304,32 @@ public class UserPages {
     @FindBy(xpath = "(//*[.='Cancel'])[1]")
     public WebElement withdrawAmountPenceresiCancelButton;
 
+    @FindBy(xpath = "//*[@placeholder='Pick a Date']")
+    public WebElement meriDentPickDate;
 
+    @FindBy(xpath = "//*[@aria-label='March 3, 2025']")
+    public WebElement meriDentSpesificDate;
 
+    @FindBy(xpath = "//*[@class='flatpickr-next-month']")
+    public WebElement meriDentClickButton;
 
+    @FindBy(xpath = "(//*[@id='time-slot'])[1]")
+    public WebElement meriDentSpesificHour;
 
+    @FindBy(xpath = "//*[@class='appointmentAdd appoint-btn rounded text-white mt-4 d-block mx-auto ']")
+    public WebElement meriDentMakeAppointmentButton;
 
+    @FindBy(xpath = "//*[@id='paypalIntUserName']")
+    public WebElement meriDentNewAppointmentName;
 
+    @FindBy(xpath = "//*[@id='paypalIntUserEmail']")
+    public WebElement meriDentNewAppointmentEmail;
 
+    @FindBy(xpath = "//*[@id='paypalIntUserPhone']")
+    public WebElement meriDentNewAppointmentPhone;
 
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@id='serviceSave']")
+    public WebElement meriDentNewAppointmentSaveButton;
 
 
 

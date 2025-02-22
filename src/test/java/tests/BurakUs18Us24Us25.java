@@ -53,7 +53,11 @@ public class BurakUs18Us24Us25 {
             anasayfaPages.signInPasswordKutusu.sendKeys(ConfigReader.getProperty("password"));
             anasayfaPages.signInLoginButonu.click();
 
-        } else {
+        } else if (testName.toLowerCase().contains("dentist")) {
+            Driver.getDriver().get(ConfigReader.getProperty("vcardUrl"));
+
+
+    } else {
             //Yönetici anasayfaya gider
             Driver.getDriver().get(ConfigReader.getProperty("url"));
             anasayfaPages.homepageSıgnInButonu.click();
@@ -69,13 +73,18 @@ public class BurakUs18Us24Us25 {
     }
 
     @AfterMethod
-    public void Quit(){
+    public void Quit(Method method) {
 
-        //Kullanıcı/Yönetici çıkış yapar
-        userPages.userAvatarDropdownMenuButonu.click();
-        userPages.signOutButonu.click();
-        Driver.quitDriver();
+        String testName = method.getName();
+        if (testName.contains("dentist")) {
+            driver.quit();
 
+        } else {
+            //Kullanıcı/Yönetici çıkış yapar
+            userPages.userAvatarDropdownMenuButonu.click();
+            userPages.signOutButonu.click();
+            Driver.quitDriver();
+        }
     }
 
 
@@ -458,6 +467,35 @@ public void US18_UserValidCreditCardTest() {
     userPages.paymentFailureBackButton.click();
 
     //Kullanıcı çıkış yapar
+
+}
+@Test
+    public void whenMembersBooksAppointmentThroughVCard_thenAppointmentShouldBeVisibleToDentist(){
+
+    //actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+    ReusableMethods.bekle(2);
+    js.executeScript("arguments[0].scrollIntoView(true);", userPages.meriDentPickDate);
+
+    ReusableMethods.bekle(2);
+    userPages.meriDentPickDate.click();
+        userPages.meriDentClickButton.click();
+        userPages.meriDentSpesificDate.click();
+        userPages.meriDentSpesificHour.click();
+        userPages.meriDentMakeAppointmentButton.click();
+        ReusableMethods.bekle(2);
+        userPages.meriDentNewAppointmentName.sendKeys(faker.name().fullName());
+        userPages.meriDentNewAppointmentEmail.sendKeys(faker.internet().emailAddress());
+        userPages.meriDentNewAppointmentPhone.sendKeys(faker.phoneNumber().phoneNumber());
+        userPages.meriDentNewAppointmentSaveButton.click();
+
+        ReusableMethods.bekle(2);
+
+
+
+
+
+
 
 }
 
