@@ -1331,6 +1331,7 @@ public class YigitUS36US37US39 {
         adminPages.avatarDropdownMenuButonu.click();
         adminPages.signOutButonu.click();
         Driver.quitDriver();
+
     }
 
     // US39 - Test Case 08
